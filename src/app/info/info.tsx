@@ -265,7 +265,7 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                     </div>
                     <div className="overflow-hidden pb-1 px-1">
                       <p className="text-stone-500 text-xs leading-relaxed font-sans font-light max-w-sm mx-auto md:mx-0 animate-reveal-text delay-[1550ms] [animation-fill-mode:forwards] opacity-0 uppercase tracking-widest">
-                        Q2WX+JQQ, SJDM, Bulacan
+                        Gaya-Gaya, San Jose del Monte Bulacan
                       </p>
                     </div>
                   </div>
