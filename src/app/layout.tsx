@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   metadataBase: new URL("https://canales-yumolwedding.vercel.app"),
 
   openGraph: {
-    title: "Arlan Dave & Rei Marie - Wedding Invitation",
+    title: "Arlan Dave & Rei Marie Anne - Wedding Invitation",
     description: "Join us in celebrating our special day.",
     url: "https://canales-yumolwedding.vercel.app",
     siteName: "Canales Wedding Invitation",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
         url: "/og-image.png",
         width: 1200,
         height: 630,
-        alt: "Arlan Dave & Rei Marie Wedding Invitation",
+        alt: "Arlan Dave & Rei Marie Anne Wedding Invitation",
       },
     ],
     locale: "en_US",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 
   twitter: {
     card: "summary_large_image",
-    title: "Arlan Dave & Rei Marie - Wedding Invitation",
+    title: "Arlan Dave & Rei Marie Anne - Wedding Invitation",
     description: "Join us in celebrating our special day.",
     images: ["/og-image.jpg"],
   },
