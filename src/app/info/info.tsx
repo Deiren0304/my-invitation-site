@@ -176,7 +176,7 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
               {/* SECTION 3: Fine Art Engagement Image Gallery */}
               <section className="w-full grid grid-cols-1 md:grid-cols-2 gap-6">
                 <button 
-                  onClick={() => openLightbox("/image2.jpeg", "Engagement Portrait")}
+                  onClick={() => openLightbox("/imagesecond.png", "Engagement Portrait")}
                   className="relative aspect-[3/4] bg-white p-3.5 rounded-2xl shadow-[0_12px_24px_rgba(0,0,0,0.02)] border border-white/80 transform -rotate-1 hover:rotate-0 hover:-translate-y-1 transition-all duration-700 ease-out group overflow-hidden cursor-pointer w-full text-left"
                 >
                   <div className="w-full h-full bg-[#EADCCF]/60 rounded-xl flex flex-col items-center justify-center relative overflow-hidden">
@@ -189,7 +189,7 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                   </div>
                 </button>
                 <button 
-                  onClick={() => openLightbox("/image1.jpeg", "Engagement Portrait")}
+                  onClick={() => openLightbox("/imagefirst.png", "Engagement Portrait")}
                   className="relative aspect-[3/4] bg-white p-3.5 rounded-2xl shadow-[0_12px_24px_rgba(0,0,0,0.02)] border border-white/80 transform rotate-1 hover:rotate-0 hover:-translate-y-1 transition-all duration-700 ease-out group overflow-hidden cursor-pointer w-full text-left"
                 >
                   <div className="w-full h-full bg-[#EADCCF]/60 rounded-xl flex flex-col items-center justify-center relative overflow-hidden">
