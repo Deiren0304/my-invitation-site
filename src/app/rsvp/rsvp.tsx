@@ -144,17 +144,23 @@ export default function RsvpForm() {
   <h1
     className="
       font-serif
-      text-[1.65rem] sm:text-4xl md:text-5xl
+      text-[1.35rem]
+      xs:text-[1.45rem]
+      sm:text-4xl
+      md:text-5xl
       text-[#3A2522]
       italic
-      tracking-tight sm:tracking-wide
-      drop-shadow-sm
+      tracking-tight
+      sm:tracking-wide
+      leading-none
       whitespace-nowrap
+      drop-shadow-sm
       opacity-0
       animate-reveal-text
       delay-[300ms]
       [animation-fill-mode:forwards]
     "
+    style={{ fontSize: "clamp(1.3rem, 5vw, 3rem)" }}
   >
     Arlan Dave &amp; Rei Marie Anne
   </h1>
