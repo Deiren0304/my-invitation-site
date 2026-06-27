@@ -181,7 +181,7 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                 >
                   <div className="w-full h-full bg-[#EADCCF]/60 rounded-xl flex flex-col items-center justify-center relative overflow-hidden">
                     <img 
-                      src="/image2.jpeg" 
+                      src="/image2.jpg" 
                       alt="Engagement Portrait 1"
                       className="absolute inset-0 w-full h-full object-cover opacity-0 transition-all duration-1000 group-hover:scale-105"
                       onLoad={(e) => e.currentTarget.classList.remove('opacity-0')}
@@ -194,7 +194,7 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                 >
                   <div className="w-full h-full bg-[#EADCCF]/60 rounded-xl flex flex-col items-center justify-center relative overflow-hidden">
                     <img 
-                      src="/image1.jpeg" 
+                      src="/image1.jpg" 
                       alt="Engagement Portrait 2"
                       className="absolute inset-0 w-full h-full object-cover opacity-0 transition-all duration-1000 group-hover:scale-105"
                       onLoad={(e) => e.currentTarget.classList.remove('opacity-0')}
