@@ -182,19 +182,21 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                 <div className="overflow-hidden pb-2 mb-3">
                   <p className="text-center font-serif text-[11px] uppercase tracking-[0.25em] text-[#844C44] mb-5 font-semibold animate-reveal-text delay-[900ms] [animation-fill-mode:forwards] opacity-0">Counting Down to Forever</p>
                 </div>
-                <div className="grid grid-cols-4 gap-3 md:gap-5">
+                {/* 4-Column Grid optimized for mobile screens */}
+                <div className="grid grid-cols-4 gap-2 min-[400px]:gap-3 md:gap-5">
                   {[
                     { label: "Days", value: timeLeft.days, delay: 1050 },
                     { label: "Hours", value: timeLeft.hours, delay: 1100 },
                     { label: "Minutes", value: timeLeft.minutes, delay: 1150 },
                     { label: "Seconds", value: timeLeft.seconds, delay: 1200 },
                   ].map((item, idx) => (
-                    <div key={idx} className="bg-white/90 p-3 md:p-4 rounded-2xl text-center shadow-xs border border-[#DCBDAF]/30 relative group overflow-hidden">
-                      <span className="block font-serif text-2xl md:text-4xl font-light text-[#3A2522] transition-transform duration-300 group-hover:scale-105">
+                    <div key={idx} className="bg-white/90 p-2 sm:p-3 md:p-4 rounded-2xl text-center shadow-xs border border-[#DCBDAF]/30 relative group overflow-hidden">
+                      <span className="block font-serif text-xl min-[400px]:text-2xl md:text-4xl font-light text-[#3A2522] transition-transform duration-300 group-hover:scale-105">
                         {String(item.value).padStart(2, "0")}
                       </span>
-                      <div className="overflow-hidden pt-0.5 mb-1 px-1">
-                        <span className={`text-[9px] md:text-[10px] uppercase tracking-widest text-[#B58382] font-sans font-semibold mt-0.5 block animate-reveal-text delay-[${item.delay}ms] [animation-fill-mode:forwards] opacity-0`}>
+                      {/* FIX: Removed px-1, adjusted text sizes, added tracking-wide on mobile/tracking-widest on desktop, and whitespace-nowrap */}
+                      <div className="overflow-hidden pt-0.5 mb-1">
+                        <span className={`text-[7px] min-[360px]:text-[8px] sm:text-[9px] md:text-[10px] uppercase tracking-wide sm:tracking-wider md:tracking-widest text-[#B58382] font-sans font-semibold mt-0.5 block whitespace-nowrap animate-reveal-text delay-[${item.delay}ms] [animation-fill-mode:forwards] opacity-0`}>
                           {item.label}
                         </span>
                       </div>
