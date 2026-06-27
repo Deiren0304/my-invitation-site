@@ -104,7 +104,7 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
       */}
       <div className="fixed inset-0 w-screen h-screen -z-10 bg-[#F5EBE1]">
   <img
-    src="/hero.png"
+    src="/heross.svg"
     alt="Wedding Background"
     className="absolute inset-0 w-full h-full object-cover object-center md:object-top"
   />

@@ -44,7 +44,7 @@ export default function Home() {
       */}
       <div className="fixed inset-0 w-screen h-screen -z-10 bg-[#F5EBE1]">
         <img 
-          src="/hero.png" 
+          src="/heross.svg" 
           alt="Wedding Background" 
           className="w-full h-full object-cover object-center md:object-top" 
         />
