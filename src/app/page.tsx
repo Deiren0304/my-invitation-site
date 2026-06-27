@@ -36,8 +36,22 @@ export default function Home() {
   }
 
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center p-4 bg-[#F5EBE1] text-[#3A2522] overflow-hidden selection:bg-[#B58382]/20 relative">
+    <main className="min-h-screen flex flex-col items-center justify-center p-4 text-[#3A2522] overflow-hidden selection:bg-[#B58382]/20 relative w-full h-full">
       
+      {/* NEW FIXED RESPONSIVE BACKGROUND 
+        z-index: -10 ensures it stays perfectly behind everything.
+        'fixed' makes sure it never moves when scrolling.
+      */}
+      <div className="fixed inset-0 w-screen h-screen -z-10 bg-[#F5EBE1]">
+        <img 
+          src="/hero.png" 
+          alt="Wedding Background" 
+          className="w-full h-full object-cover object-center md:object-top" 
+        />
+        {/* Optional soft overlay to ensure your text and envelope remain readable */}
+        <div className="absolute inset-0 bg-white/20 backdrop-blur-[1px]"></div>
+      </div>
+
       {/* Self-contained Crisp Geometric Keyframe Animations */}
       <style jsx global>{`
         @keyframes crispReveal {
@@ -92,11 +106,11 @@ export default function Home() {
         
         {/* Main Couple Names - Sharp Mask Slide Reveal */}
         <div className="overflow-hidden mb-3 py-1 px-4">
-          <h1 
-            className="font-serif text-4xl sm:text-5xl text-[#3A2522] font-normal tracking-wide italic dynamic-title drop-shadow-xs opacity-0 animate-crisp-reveal"
-            style={{ animationDelay: "350ms" }}
+          <h1
+          className="font-serif text-[1.75rem] md:text-5xl text-[#3A2522] font-normal tracking-tight md:tracking-wide italic drop-shadow-xs whitespace-nowrap leading-none opacity-0 animate-crisp-reveal"
+          style={{ animationDelay: "350ms" }}
           >
-            Arlan &amp; Rei Marie
+          Arlan Dave &amp; Rei Marie Anne
           </h1>
         </div>
         
@@ -112,7 +126,7 @@ export default function Home() {
 
         {/* Luxury Animated Envelope Box - Sharp Scale-Up Frame Entry */}
         <div 
-          className="relative w-full aspect-[4/3] bg-[#EADCCF] rounded-xl shadow-[0_25px_50px_-12px_rgba(58,37,34,0.15)] border border-white/40 p-2 flex items-center justify-center overflow-visible group opacity-0 animate-clean-fade"
+          className="relative w-full aspect-[4/3] bg-[#EADCCF]/80 backdrop-blur-md rounded-xl shadow-[0_25px_50px_-12px_rgba(58,37,34,0.25)] border border-white/40 p-2 flex items-center justify-center overflow-visible group opacity-0 animate-clean-fade"
           style={{ animationDelay: "850ms" }}
         >
           
@@ -167,7 +181,7 @@ export default function Home() {
             className="text-[#844C44] font-serif text-sm tracking-wide italic opacity-0 animate-crisp-reveal"
             style={{ animationDelay: "1300ms" }}
           >
-            <span className="inline-block animate-pristine-pulse">
+            <span className="inline-block animate-pristine-pulse bg-white/40 px-4 py-1 rounded-full backdrop-blur-sm border border-white/50">
               Click to open the invitation
             </span>
           </p>

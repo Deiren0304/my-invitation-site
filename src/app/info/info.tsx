@@ -99,8 +99,22 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
 
   return (
     <>
+      {/* FIXED BACKGROUND MOVED HERE
+        Using 100dvh prevents background jumping on mobile scrolling
+      */}
+      <div className="fixed inset-0 w-screen h-screen -z-10 bg-[#F5EBE1]">
+  <img
+    src="/hero.png"
+    alt="Wedding Background"
+    className="absolute inset-0 w-full h-full object-cover object-center md:object-top"
+  />
+
+  <div className="absolute inset-0 bg-white/20 backdrop-blur-[1px]"></div>
+</div>
+
       <main 
-        className={`min-h-screen w-full flex flex-col items-center justify-start p-4 md:p-16 bg-[#F5EBE1] text-[#3A2522] overflow-x-hidden relative selection:bg-[#B58382]/20 transition-all duration-800 ease-in-out ${
+        /* Changed bg-[#F5EBE1] to bg-transparent so the background image shows through */
+        className={`min-h-screen w-full flex flex-col items-center justify-start p-4 md:p-16 bg-transparent text-[#3A2522] overflow-x-hidden relative selection:bg-[#B58382]/20 transition-all duration-800 ease-in-out ${
           isExiting 
             ? "opacity-0 translate-y-12 pointer-events-none scale-[0.98]" 
             : "opacity-100 translate-y-0"
@@ -130,8 +144,8 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                   </p>
                 </div>
                 <div className="overflow-hidden pb-1 px-4 mb-3">
-                  <h1 className="font-serif text-5xl md:text-7xl text-[#3A2522] font-normal tracking-wide italic dynamic-title drop-shadow-xs animate-reveal-text delay-300 [animation-fill-mode:forwards] opacity-0">
-                    Arlan &amp; Rei Marie
+                  <h1 className="font-serif text-[1.7rem] md:text-7xl text-[#3A2522] font-normal tracking-tight md:tracking-wide italic drop-shadow-xs whitespace-nowrap leading-none animate-reveal-text delay-300 [animation-fill-mode:forwards] opacity-0">
+                  Arlan Dave &amp; Rei Marie Anne
                   </h1>
                 </div>
                 <div className="h-px w-28 bg-[#B58382]/30 mx-auto relative group">
@@ -148,7 +162,7 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
               </section>
 
               {/* SECTION 2: Modern Aesthetic Live Countdown Dashboard */}
-              <section className="w-full max-w-xl bg-white/30 backdrop-blur-md p-6 md:p-8 rounded-3xl border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.02)] transition-all duration-500 hover:bg-white/40">
+              <section className="w-full max-w-xl bg-white/40 backdrop-blur-md p-6 md:p-8 rounded-3xl border border-white/60 shadow-[0_8px_30px_rgb(0,0,0,0.02)] transition-all duration-500 hover:bg-white/50">
                 <div className="overflow-hidden pb-2 mb-3">
                   <p className="text-center font-serif text-[11px] uppercase tracking-[0.25em] text-[#844C44] mb-5 font-semibold animate-reveal-text delay-900 [animation-fill-mode:forwards] opacity-0">Counting Down to Forever</p>
                 </div>
@@ -159,7 +173,7 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                     { label: "Minutes", value: timeLeft.minutes, delay: 1150 },
                     { label: "Seconds", value: timeLeft.seconds, delay: 1200 },
                   ].map((item, idx) => (
-                    <div key={idx} className="bg-white/80 p-3 md:p-4 rounded-2xl text-center shadow-xs border border-[#DCBDAF]/20 relative group overflow-hidden">
+                    <div key={idx} className="bg-white/90 p-3 md:p-4 rounded-2xl text-center shadow-xs border border-[#DCBDAF]/30 relative group overflow-hidden">
                       <span className="block font-serif text-2xl md:text-4xl font-light text-[#3A2522] transition-transform duration-300 group-hover:scale-105">
                         {String(item.value).padStart(2, "0")}
                       </span>
@@ -177,7 +191,7 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
               <section className="w-full grid grid-cols-1 md:grid-cols-2 gap-6">
                 <button 
                   onClick={() => openLightbox("/imageseconds.png", "Engagement Portrait")}
-                  className="relative aspect-[3/4] bg-white p-3.5 rounded-2xl shadow-[0_12px_24px_rgba(0,0,0,0.02)] border border-white/80 transform -rotate-1 hover:rotate-0 hover:-translate-y-1 transition-all duration-700 ease-out group overflow-hidden cursor-pointer w-full text-left"
+                  className="relative aspect-[3/4] bg-white/80 backdrop-blur-sm p-3.5 rounded-2xl shadow-[0_12px_24px_rgba(0,0,0,0.02)] border border-white/80 transform -rotate-1 hover:rotate-0 hover:-translate-y-1 transition-all duration-700 ease-out group overflow-hidden cursor-pointer w-full text-left"
                 >
                   <div className="w-full h-full bg-[#EADCCF]/60 rounded-xl flex flex-col items-center justify-center relative overflow-hidden">
                     <img 
@@ -190,7 +204,7 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                 </button>
                 <button 
                   onClick={() => openLightbox("/imagefirsts.png", "Engagement Portrait")}
-                  className="relative aspect-[3/4] bg-white p-3.5 rounded-2xl shadow-[0_12px_24px_rgba(0,0,0,0.02)] border border-white/80 transform rotate-1 hover:rotate-0 hover:-translate-y-1 transition-all duration-700 ease-out group overflow-hidden cursor-pointer w-full text-left"
+                  className="relative aspect-[3/4] bg-white/80 backdrop-blur-sm p-3.5 rounded-2xl shadow-[0_12px_24px_rgba(0,0,0,0.02)] border border-white/80 transform rotate-1 hover:rotate-0 hover:-translate-y-1 transition-all duration-700 ease-out group overflow-hidden cursor-pointer w-full text-left"
                 >
                   <div className="w-full h-full bg-[#EADCCF]/60 rounded-xl flex flex-col items-center justify-center relative overflow-hidden">
                     <img 
@@ -207,7 +221,7 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
               <section className="w-full space-y-10">
                 
                 {/* Card 1: Location Block */}
-                <div className="bg-white/60 backdrop-blur-xs rounded-3xl overflow-hidden border border-white/80 shadow-[0_8px_30px_rgb(0,0,0,0.01)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.03)] transition-all duration-500 grid grid-cols-1 md:grid-cols-12 group">
+                <div className="bg-white/70 backdrop-blur-md rounded-3xl overflow-hidden border border-white/80 shadow-[0_8px_30px_rgb(0,0,0,0.01)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.03)] transition-all duration-500 grid grid-cols-1 md:grid-cols-12 group">
                   <button 
                     onClick={() => openLightbox("/location.png", "Iglesia ng Dios kay Cristo Jesus, Haligi at Suhay ng Katotohanan")}
                     className="md:col-span-5 relative aspect-video md:aspect-auto bg-[#EADCCF]/50 flex items-center justify-center overflow-hidden border-b md:border-b-0 md:border-r border-[#B58382]/20 cursor-pointer text-left w-full"
@@ -240,7 +254,7 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                 </div>
 
                 {/* Card 2: Reception Block */}
-                <div className="bg-white/60 backdrop-blur-xs rounded-3xl overflow-hidden border border-white/80 shadow-[0_8px_30px_rgb(0,0,0,0.01)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.03)] transition-all duration-500 grid grid-cols-1 md:grid-cols-12 group">
+                <div className="bg-white/70 backdrop-blur-md rounded-3xl overflow-hidden border border-white/80 shadow-[0_8px_30px_rgb(0,0,0,0.01)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.03)] transition-all duration-500 grid grid-cols-1 md:grid-cols-12 group">
                   <div className="md:col-span-7 p-8 md:p-10 flex flex-col justify-center text-center md:text-left space-y-3 order-2 md:order-1">
                     <div className="overflow-hidden pb-1">
                       <div className="text-[10px] uppercase tracking-[0.25em] text-[#B58382] font-bold animate-reveal-text delay-[1600ms] [animation-fill-mode:forwards] opacity-0">Reception</div>
@@ -271,13 +285,13 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                 </div>
 
                 {/* Card 3: Attire Block */}
-                <div className="bg-white/60 backdrop-blur-xs rounded-3xl overflow-hidden border border-white/80 shadow-[0_8px_30px_rgb(0,0,0,0.01)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.03)] transition-all duration-500 grid grid-cols-1 md:grid-cols-12 group">
+                <div className="bg-white/70 backdrop-blur-md rounded-3xl overflow-hidden border border-white/80 shadow-[0_8px_30px_rgb(0,0,0,0.01)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.03)] transition-all duration-500 grid grid-cols-1 md:grid-cols-12 group">
                   <button 
-                    onClick={() => openLightbox("/attires.png", "Dress Code Style Inspiration")}
+                    onClick={() => openLightbox("/attiress.png", "Dress Code Style Inspiration")}
                     className="md:col-span-5 relative aspect-video md:aspect-auto bg-[#EADCCF]/50 flex items-center justify-center overflow-hidden border-b md:border-b-0 md:border-r border-[#B58382]/20 cursor-pointer text-left w-full"
                   >
                     <img 
-                      src="/attires.png" 
+                      src="/attiress.png" 
                       alt="Dress Code Style Inspiration"
                       className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 group-hover:scale-105 transition-transform"
                       onLoad={(e) => e.currentTarget.classList.remove('opacity-0')}
@@ -311,8 +325,8 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                 </div>
 
                 {/* Card 4: Gift Note - Upgraded Aesthetic */}
-                <div className="bg-white/70 backdrop-blur-md rounded-3xl overflow-hidden border border-white/80 shadow-[0_12px_45px_rgba(0,0,0,0.02)] p-2 transition-all duration-500">
-                  <div className="border border-[#B58382]/30 rounded-2xl p-8 md:p-14 flex flex-col items-center text-center relative overflow-hidden bg-gradient-to-b from-transparent to-[#F5EBE1]/20">
+                <div className="bg-white/80 backdrop-blur-md rounded-3xl overflow-hidden border border-white/80 shadow-[0_12px_45px_rgba(0,0,0,0.02)] p-2 transition-all duration-500">
+                  <div className="border border-[#B58382]/40 rounded-2xl p-8 md:p-14 flex flex-col items-center text-center relative overflow-hidden bg-gradient-to-b from-white/40 to-transparent">
                     
                     {/* Decorative Botanical Icon */}
                     <div className="animate-reveal-text delay-[2500ms] [animation-fill-mode:forwards] opacity-0">
@@ -329,19 +343,19 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                       <h2 className="font-serif text-3xl md:text-4xl text-[#3A2522] tracking-wider italic animate-reveal-text delay-[2600ms] [animation-fill-mode:forwards] opacity-0">Gift Note</h2>
                     </div>
 
-                    <div className="h-px w-16 bg-[#B58382]/40 mb-8 animate-fade-in delay-[2650ms] [animation-fill-mode:forwards] opacity-0"></div>
+                    <div className="h-px w-16 bg-[#B58382]/50 mb-8 animate-fade-in delay-[2650ms] [animation-fill-mode:forwards] opacity-0"></div>
 
                     <div className="space-y-3 text-stone-700 text-sm md:text-base leading-loose font-serif max-w-lg mx-auto animate-fade-in delay-[2700ms] [animation-fill-mode:forwards] opacity-0">
-                      <p className="italic text-[#3A2522]">With all that we have, we've been truly blessed.</p>
-                      <p className="italic text-[#3A2522]">Your presence and prayers are all that we request.</p>
-                      <p className="italic text-[#3A2522]">But if you desire to give nonetheless,</p>
-                      <p className="italic text-[#3A2522]">A monetary gift is one we suggest.</p>
+                      <p className="italic text-[#3A2522] font-medium">With all that we have, we've been truly blessed.</p>
+                      <p className="italic text-[#3A2522] font-medium">Your presence and prayers are all that we request.</p>
+                      <p className="italic text-[#3A2522] font-medium">But if you desire to give nonetheless,</p>
+                      <p className="italic text-[#3A2522] font-medium">A monetary gift is one we suggest.</p>
                     </div>
                   </div>
                 </div>
 
                 {/* Card 5: Reminders & Socials */}
-                <div className="bg-white/60 backdrop-blur-xs rounded-3xl overflow-hidden border border-white/80 shadow-[0_8px_30px_rgb(0,0,0,0.01)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.03)] transition-all duration-500 p-8 md:p-12 text-center">
+                <div className="bg-white/70 backdrop-blur-md rounded-3xl overflow-hidden border border-white/80 shadow-[0_8px_30px_rgb(0,0,0,0.01)] hover:shadow-[0_12px_40px_rgba(0,0,0,0.03)] transition-all duration-500 p-8 md:p-12 text-center">
                   <div className="overflow-hidden pb-2 mb-6">
                     <h2 className="font-serif text-3xl md:text-4xl text-[#3A2522] tracking-wide italic animate-reveal-text delay-[2800ms] [animation-fill-mode:forwards] opacity-0">Reminders</h2>
                   </div>
@@ -349,31 +363,31 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                   {/* Reminder Icons */}
                   <div className="grid grid-cols-3 gap-3 md:gap-6 max-w-md mx-auto mb-10 animate-fade-in delay-[2900ms] [animation-fill-mode:forwards] opacity-0">
                     <div className="flex flex-col items-center space-y-3">
-                      <span className="text-3xl bg-[#F5EBE1] border border-[#B58382]/20 w-12 h-12 flex items-center justify-center rounded-full shadow-sm">⏳</span>
-                      <p className="text-[9px] md:text-[10px] uppercase tracking-widest text-[#844C44] font-bold">Be on Time</p>
+                      <span className="text-3xl bg-[#F5EBE1] border border-[#B58382]/30 w-12 h-12 flex items-center justify-center rounded-full shadow-sm">⏳</span>
+                      <p className="text-[9px] md:text-[10px] uppercase tracking-widest text-[#844C44] font-bold bg-white/50 px-2 py-1 rounded backdrop-blur-sm">Be on Time</p>
                     </div>
                     <div className="flex flex-col items-center space-y-3">
-                      <span className="text-3xl bg-[#F5EBE1] border border-[#B58382]/20 w-12 h-12 flex items-center justify-center rounded-full shadow-sm">🥂</span>
-                      <p className="text-[9px] md:text-[10px] uppercase tracking-widest text-[#844C44] font-bold">Finish the Event</p>
+                      <span className="text-3xl bg-[#F5EBE1] border border-[#B58382]/30 w-12 h-12 flex items-center justify-center rounded-full shadow-sm">🥂</span>
+                      <p className="text-[9px] md:text-[10px] uppercase tracking-widest text-[#844C44] font-bold bg-white/50 px-2 py-1 rounded backdrop-blur-sm">Finish the Event</p>
                     </div>
                     <div className="flex flex-col items-center space-y-3">
-                      <span className="text-3xl bg-[#F5EBE1] border border-[#B58382]/20 w-12 h-12 flex items-center justify-center rounded-full shadow-sm">✨</span>
-                      <p className="text-[9px] md:text-[10px] uppercase tracking-widest text-[#844C44] font-bold">Enjoy & Have Fun</p>
+                      <span className="text-3xl bg-[#F5EBE1] border border-[#B58382]/30 w-12 h-12 flex items-center justify-center rounded-full shadow-sm">✨</span>
+                      <p className="text-[9px] md:text-[10px] uppercase tracking-widest text-[#844C44] font-bold bg-white/50 px-2 py-1 rounded backdrop-blur-sm">Enjoy & Have Fun</p>
                     </div>
                   </div>
 
                   {/* Snap & Share Section */}
-                  <div className="border-t border-[#B58382]/20 pt-10 animate-fade-in delay-[3000ms] [animation-fill-mode:forwards] opacity-0">
+                  <div className="border-t border-[#B58382]/30 pt-10 animate-fade-in delay-[3000ms] [animation-fill-mode:forwards] opacity-0">
                     <h2 className="font-serif text-3xl md:text-4xl text-[#3A2522] tracking-wide italic mb-3">Snap & Share</h2>
-                    <p className="text-stone-600 text-[10px] md:text-xs uppercase tracking-[0.2em] mb-4">Help us capture the love by using our hashtag</p>
-                    <p className="font-sans font-bold text-lg md:text-xl text-[#844C44] mb-8 select-all">#IANNEangSagotSaDasalniARLAN</p>
+                    <p className="text-stone-700 font-medium text-[10px] md:text-xs uppercase tracking-[0.2em] mb-4 bg-white/40 inline-block px-3 py-1 rounded-full">Help us capture the love by using our hashtag</p>
+                    <p className="font-sans font-bold text-lg md:text-xl text-[#844C44] mb-8 select-all drop-shadow-sm bg-white/60 inline-block px-4 py-2 rounded-lg">#IANNEangSagotSaDasalniARLAN</p>
                     
                     {/* Social Icons */}
                     <div className="flex justify-center gap-5 text-[#3A2522]">
-                      <svg className="w-6 h-6 hover:text-[#844C44] transition-colors cursor-pointer hover:-translate-y-0.5" fill="currentColor" viewBox="0 0 24 24" aria-label="Instagram"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-                      <svg className="w-6 h-6 hover:text-[#844C44] transition-colors cursor-pointer hover:-translate-y-0.5" fill="currentColor" viewBox="0 0 24 24" aria-label="Facebook"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
-                      <svg className="w-6 h-6 hover:text-[#844C44] transition-colors cursor-pointer hover:-translate-y-0.5" fill="currentColor" viewBox="0 0 24 24" aria-label="Twitter"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
-                      <svg className="w-6 h-6 hover:text-[#844C44] transition-colors cursor-pointer hover:-translate-y-0.5" fill="currentColor" viewBox="0 0 24 24" aria-label="TikTok"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
+                      <svg className="w-6 h-6 hover:text-[#844C44] transition-colors cursor-pointer hover:-translate-y-0.5 drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24" aria-label="Instagram"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                      <svg className="w-6 h-6 hover:text-[#844C44] transition-colors cursor-pointer hover:-translate-y-0.5 drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24" aria-label="Facebook"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                      <svg className="w-6 h-6 hover:text-[#844C44] transition-colors cursor-pointer hover:-translate-y-0.5 drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24" aria-label="Twitter"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                      <svg className="w-6 h-6 hover:text-[#844C44] transition-colors cursor-pointer hover:-translate-y-0.5 drop-shadow-sm" fill="currentColor" viewBox="0 0 24 24" aria-label="TikTok"><path d="M12.525.02c1.31-.02 2.61-.01 3.91-.02.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/></svg>
                     </div>
                   </div>
                 </div>
@@ -381,8 +395,9 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
               </section>
 
               {/* SECTION 5: RSVP Action Button */}
-              <section className="w-full text-center py-6 border-t border-[#B58382]/20 mt-16 animate-fade-in delay-[3100ms] [animation-fill-mode:forwards] opacity-0">
-                <p className="font-serif text-sm italic text-stone-600 mb-6">We kindly request the favor of your response</p>
+              <section className="w-full text-center py-6 border-t border-[#B58382]/30 mt-16 animate-fade-in delay-[3100ms] [animation-fill-mode:forwards] opacity-0">
+                <p className="font-serif text-sm italic text-[#3A2522] font-medium bg-white/40 inline-block px-4 py-1 rounded-full mb-6">We kindly request the favor of your response</p>
+                <br />
                 <button 
                   onClick={() => handleToggleRsvp(true)}
                   className="inline-block bg-[#844C44] text-[#F5EBE1] font-sans font-bold uppercase tracking-[0.3em] text-[11px] py-4 px-12 rounded-full border-2 border-white/40 shadow-lg hover:shadow-2xl hover:bg-[#6D3C36] active:bg-[#592F2A] transition-all duration-300 ease-out hover:-translate-y-1 active:translate-y-0.5 active:scale-95 cursor-pointer"
@@ -398,7 +413,7 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
               
               <button 
                 onClick={() => handleToggleRsvp(false)}
-                className="mt-10 text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-[#844C44] hover:text-[#3A2522] transition-colors underline underline-offset-4 cursor-pointer font-semibold"
+                className="mt-10 text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-[#844C44] hover:text-[#3A2522] transition-colors underline underline-offset-4 cursor-pointer font-semibold bg-white/50 px-4 py-2 rounded-full backdrop-blur-sm"
               >
                 Back to Invitation Details
               </button>
@@ -406,16 +421,16 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
           )}
 
           {/* Tail Signature Branding Accent */}
-          <footer className={`text-center pt-8 opacity-40 select-none pointer-events-none transition-opacity duration-700 ${!showRsvp ? 'animate-fade-in delay-[3200ms] [animation-fill-mode:forwards] opacity-0' : 'opacity-100'}`}>
-            <p className="font-serif text-xs italic tracking-widest text-[#3A2522]">Arlan Dave Canales &amp; Rei Marie Anne Yumol • 2026</p>
+          <footer className={`text-center pt-8 opacity-60 select-none pointer-events-none transition-opacity duration-700 ${!showRsvp ? 'animate-fade-in delay-[3200ms] [animation-fill-mode:forwards] opacity-0' : 'opacity-100'}`}>
+            <p className="font-serif text-xs italic tracking-widest text-[#3A2522] bg-white/30 inline-block px-3 py-1 rounded-full">Arlan Dave Canales &amp; Rei Marie Anne Yumol • 2026</p>
           </footer>
 
         </div>
       </main>
 
-      {/* NEW: Full-Screen Transition Loader */}
+      {/* NEW: Full-Screen Transition Loader with blurred backdrop */}
       {isTransitioning && (
-        <div className="fixed inset-0 z- flex flex-col items-center justify-center bg-[#F5EBE1] animate-in fade-in duration-300">
+        <div className="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#F5EBE1] animate-in fade-in duration-300">
           <div className="flex flex-col items-center animate-in zoom-in-95 duration-500">
             <img 
               src="/monoss.png" 

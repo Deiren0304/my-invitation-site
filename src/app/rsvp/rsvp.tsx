@@ -131,23 +131,41 @@ export default function RsvpForm() {
       
       {/* STEP 1: FIND INVITATION */}
       {step === 1 && (
-        <div className="animate-in fade-in slide-in-from-bottom-6 duration-1000 ease-out flex flex-col items-center">
+        <div className="flex flex-col items-center w-full">
           
-          {/* Elegant Floating Typography Header (No Box/Divider) */}
-          <div className="text-center space-y-4 mb-8 w-full">
-            <p className="tracking-[0.4em] uppercase text-[9px] md:text-[10px] text-[#844C44] font-semibold opacity-80">
-              RSVP for the Wedding of
-            </p>
-            <h1 className="font-serif text-4xl md:text-5xl text-[#3A2522] italic tracking-wide drop-shadow-sm">
-              Arlan & Rei Marie
-            </h1>
-            <div className="h-px w-12 bg-[#B58382]/30 mx-auto mt-2"></div>
+          {/* Elegant Floating Typography Header */}
+          <div className="text-center space-y-4 mb-8 w-full pt-1">
+            <div className="overflow-hidden pb-1">
+              <p className="tracking-[0.4em] uppercase text-[9px] md:text-[10px] text-[#844C44] font-semibold opacity-0 animate-reveal-text delay-[150ms] [animation-fill-mode:forwards]">
+                RSVP for the Wedding of
+              </p>
+            </div>
+            <div className="overflow-hidden pb-2 px-2">
+  <h1
+    className="
+      font-serif
+      text-[1.65rem] sm:text-4xl md:text-5xl
+      text-[#3A2522]
+      italic
+      tracking-tight sm:tracking-wide
+      drop-shadow-sm
+      whitespace-nowrap
+      opacity-0
+      animate-reveal-text
+      delay-[300ms]
+      [animation-fill-mode:forwards]
+    "
+  >
+    Arlan Dave &amp; Rei Marie Anne
+  </h1>
+</div>
+            <div className="h-px w-12 bg-[#B58382]/30 mx-auto mt-2 opacity-0 animate-fade-in delay-[450ms] [animation-fill-mode:forwards]"></div>
           </div>
 
           {/* Search Form Card */}
           <form 
             onSubmit={handleSearch}
-            className="w-full bg-white/70 backdrop-blur-md p-8 md:p-12 rounded-3xl shadow-[0_12px_45px_rgba(0,0,0,0.02)] border border-white/80 relative group overflow-hidden"
+            className="w-full bg-white/70 backdrop-blur-md p-8 md:p-12 rounded-3xl shadow-[0_12px_45px_rgba(0,0,0,0.02)] border border-white/80 relative group overflow-hidden opacity-0 animate-fade-in delay-[600ms] [animation-fill-mode:forwards]"
           >
             {/* Decorative Corner Accents */}
             <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-[#B58382]/20 rounded-tl-2xl pointer-events-none" />
@@ -155,12 +173,16 @@ export default function RsvpForm() {
             <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-[#B58382]/20 rounded-bl-2xl pointer-events-none" />
             <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-[#B58382]/20 rounded-br-2xl pointer-events-none" />
 
-            <div className="text-center space-y-2 pb-5">
-              <h2 className="font-serif text-xl md:text-2xl text-[#3A2522] tracking-wide">Find Your Invitation</h2>
-              <p className="text-stone-500 text-xs font-sans max-w-xs mx-auto leading-relaxed">Please enter your first and last name exactly as it appears on your envelope.</p>
+            <div className="text-center space-y-2 pb-5 pt-1">
+              <div className="overflow-hidden pb-1">
+                <h2 className="font-serif text-xl md:text-2xl text-[#3A2522] tracking-wide opacity-0 animate-reveal-text delay-[750ms] [animation-fill-mode:forwards]">Find Your Invitation</h2>
+              </div>
+              <div className="overflow-hidden pb-1">
+                <p className="text-stone-500 text-xs font-sans max-w-xs mx-auto leading-relaxed opacity-0 animate-reveal-text delay-[900ms] [animation-fill-mode:forwards]">Please enter your first and last name exactly as it appears on your envelope.</p>
+              </div>
             </div>
 
-            <div className="space-y-2 mb-6">
+            <div className="space-y-2 mb-6 opacity-0 animate-fade-in delay-[1050ms] [animation-fill-mode:forwards]">
               <label htmlFor="searchQuery" className="block text-[10px] md:text-xs uppercase tracking-[0.25em] font-semibold text-[#844C44] font-sans">
                 Full Name
               </label>
@@ -179,13 +201,15 @@ export default function RsvpForm() {
               )}
             </div>
 
-            <button
-              type="submit"
-              disabled={isSearching}
-              className="w-full bg-[#844C44] hover:bg-[#6D3C36] disabled:bg-stone-400 disabled:cursor-not-allowed text-white font-serif tracking-[0.15em] uppercase text-xs py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer hover:-translate-y-0.5 active:translate-y-0 select-none font-semibold flex justify-center items-center mt-auto"
-            >
-              {isSearching ? "Searching Records..." : "Find Invitation"}
-            </button>
+            <div className="opacity-0 animate-fade-in delay-[1200ms] [animation-fill-mode:forwards]">
+              <button
+                type="submit"
+                disabled={isSearching}
+                className="w-full bg-[#844C44] hover:bg-[#6D3C36] disabled:bg-stone-400 disabled:cursor-not-allowed text-white font-serif tracking-[0.15em] uppercase text-xs py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer hover:-translate-y-0.5 active:translate-y-0 select-none font-semibold flex justify-center items-center mt-auto"
+              >
+                {isSearching ? "Searching Records..." : "Find Invitation"}
+              </button>
+            </div>
           </form>
         </div>
       )}
@@ -203,16 +227,22 @@ export default function RsvpForm() {
           <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-[#B58382]/20 rounded-br-2xl pointer-events-none" />
 
           {/* Form Header */}
-          <div className="text-center space-y-2 border-b border-[#B58382]/20 pb-6">
-            <p className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#B58382] font-sans">Welcome,</p>
-            <h2 className="font-serif text-2xl text-[#3A2522] tracking-wide italic capitalize">{matchedName}</h2>
-            <p className="text-stone-600 text-xs font-sans pt-1">
-              We have reserved <span className="font-semibold text-[#844C44]">{allocatedSeats}</span> seat{allocatedSeats > 1 ? 's' : ''} in your honor.
-            </p>
+          <div className="text-center space-y-2 border-b border-[#B58382]/20 pb-6 pt-2">
+            <div className="overflow-hidden pb-1">
+              <p className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#B58382] font-sans opacity-0 animate-reveal-text delay-[150ms] [animation-fill-mode:forwards]">Welcome,</p>
+            </div>
+            <div className="overflow-hidden pb-1">
+              <h2 className="font-serif text-2xl text-[#3A2522] tracking-wide italic capitalize opacity-0 animate-reveal-text delay-[300ms] [animation-fill-mode:forwards]">{matchedName}</h2>
+            </div>
+            <div className="overflow-hidden pt-1 pb-1">
+              <p className="text-stone-600 text-xs font-sans opacity-0 animate-reveal-text delay-[450ms] [animation-fill-mode:forwards]">
+                We have reserved <span className="font-semibold text-[#844C44]">{allocatedSeats}</span> seat{allocatedSeats > 1 ? 's' : ''} in your honor.
+              </p>
+            </div>
           </div>
 
           {/* Attendance Toggle */}
-          <div className="space-y-3">
+          <div className="space-y-3 opacity-0 animate-fade-in delay-[600ms] [animation-fill-mode:forwards]">
             <label className="block text-[10px] md:text-xs uppercase tracking-[0.25em] font-semibold text-[#844C44] font-sans text-center">
               Will you attend?
             </label>
@@ -249,7 +279,7 @@ export default function RsvpForm() {
 
           {/* Conditional Fields if Attending */}
           {formData.attending === "yes" && (
-            <div className="space-y-6 pt-4 animate-in fade-in slide-in-from-top-4 duration-500 ease-out border-t border-[#B58382]/10">
+            <div className="space-y-6 pt-4 animate-in fade-in slide-in-from-top-4 duration-500 ease-out border-t border-[#B58382]/10 opacity-0 animate-fade-in delay-[750ms] [animation-fill-mode:forwards]">
               
               {allocatedSeats > 1 && (
                 <div className="space-y-2">
@@ -311,7 +341,7 @@ export default function RsvpForm() {
             </div>
           )}
 
-          <div className="pt-2 flex flex-col space-y-3">
+          <div className="pt-2 flex flex-col space-y-3 opacity-0 animate-fade-in delay-[900ms] [animation-fill-mode:forwards]">
             <button
               type="submit"
               disabled={isSubmitting}
@@ -323,7 +353,7 @@ export default function RsvpForm() {
               type="button"
               onClick={() => setStep(1)}
               disabled={isSubmitting}
-              className="w-full text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-[#844C44] transition-colors py-2 font-medium disabled:opacity-50"
+              className="w-full text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-[#844C44] transition-colors py-2 font-medium disabled:opacity-50 cursor-pointer"
             >
               Not {matchedName}? Search Again
             </button>
@@ -333,21 +363,30 @@ export default function RsvpForm() {
 
       {/* STEP 3: SUCCESS STATE */}
       {step === 3 && (
-        <div className="bg-white/70 backdrop-blur-md p-10 md:p-14 rounded-3xl text-center border border-white/80 shadow-[0_12px_40px_rgba(0,0,0,0.03)] transition-all duration-700 animate-in fade-in zoom-in-95 ease-out flex flex-col items-center space-y-5">
-          <div className="w-14 h-14 bg-[#F5EBE1] border border-[#B58382]/30 rounded-full flex items-center justify-center shadow-sm animate-in zoom-in duration-700 delay-300">
+        <div className="bg-white/70 backdrop-blur-md p-10 md:p-14 rounded-3xl text-center border border-white/80 shadow-[0_12px_40px_rgba(0,0,0,0.03)] flex flex-col items-center space-y-5">
+          
+          <div className="w-14 h-14 bg-[#F5EBE1] border border-[#B58382]/30 rounded-full flex items-center justify-center shadow-sm opacity-0 animate-fade-in delay-[150ms] [animation-fill-mode:forwards]">
             <svg className="w-6 h-6 text-[#844C44]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
               <path strokeLinecap="round" strokeLinejoin="round" d="M4.5 12.75l6 6 9-13.5" />
             </svg>
           </div>
-          <h3 className="font-serif text-3xl text-[#3A2522] font-normal tracking-wide italic">
-            Thank You
-          </h3>
-          <div className="h-px w-16 bg-[#B58382]/40 my-2"></div>
-          <p className="text-stone-600 text-sm font-light font-sans max-w-sm leading-relaxed">
-            {formData.attending === "yes" 
-              ? "Your response has been graciously received. We look forward to celebrating this special day with you."
-              : "We are so sorry you won't be able to join us, but we sincerely appreciate you letting us know. You will be missed!"}
-          </p>
+          
+          <div className="overflow-hidden pb-1">
+            <h3 className="font-serif text-3xl text-[#3A2522] font-normal tracking-wide italic opacity-0 animate-reveal-text delay-[300ms] [animation-fill-mode:forwards]">
+              Thank You
+            </h3>
+          </div>
+          
+          <div className="h-px w-16 bg-[#B58382]/40 my-2 opacity-0 animate-fade-in delay-[450ms] [animation-fill-mode:forwards]"></div>
+          
+          <div className="overflow-hidden pt-1 pb-1">
+            <p className="text-stone-600 text-sm font-light font-sans max-w-sm leading-relaxed opacity-0 animate-reveal-text delay-[600ms] [animation-fill-mode:forwards]">
+              {formData.attending === "yes" 
+                ? "Your response has been graciously received. We look forward to celebrating this special day with you."
+                : "We are so sorry you won't be able to join us, but we sincerely appreciate you letting us know. You will be missed!"}
+            </p>
+          </div>
+          
         </div>
       )}
       
