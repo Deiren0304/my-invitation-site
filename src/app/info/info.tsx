@@ -149,7 +149,7 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                 <div className="overflow-hidden pb-2 px-2">
                   <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-[#3A2522] font-normal tracking-wide italic drop-shadow-sm leading-[1.3] md:leading-none animate-reveal-text delay-[300ms] [animation-fill-mode:forwards] opacity-0">
                     <span className="block md:inline">Arlan Dave</span>
-                    <span className="block md:inline text-3xl md:text-5xl text-[#B58382] font-light mx-3 my-1 md:my-0">&amp;</span>
+                    <span className="block md:inline text-3xl md:text-5xl text-[#B58382] font-light mx-3 my-1 md:my-0">&</span>
                     <span className="block md:inline">Rei Marie Anne</span>
                   </h1>
                 </div>
@@ -160,16 +160,23 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                   <span className="text-[10px] text-[#B58382] mb-0.5">✦</span>
                   <div className="h-px w-12 md:w-20 bg-gradient-to-l from-transparent to-[#B58382]/50"></div>
                 </div>
+
+                {/* NEW: Request the honor text added here */}
+                <div className="overflow-hidden pb-2 pt-4">
+                  <p className="font-serif text-[15px] md:text-lg text-[#844C44] italic animate-reveal-text opacity-0 [animation-fill-mode:forwards]" style={{ animationDelay: '550ms' }}>
+                    Request the honor of your presence as we celebrate our wedding on
+                  </p>
+                </div>
                 
                 {/* Date & Time */}
                 <div className="space-y-4 font-serif pt-2">
                   <div className="overflow-hidden pb-1">
-                    <p className="text-xl md:text-3xl font-light tracking-widest text-[#3A2522] animate-reveal-text delay-[600ms] [animation-fill-mode:forwards] opacity-0">
+                    <p className="text-xl md:text-3xl font-light tracking-widest text-[#3A2522] animate-reveal-text opacity-0 [animation-fill-mode:forwards]" style={{ animationDelay: '650ms' }}>
                       Monday, September 28th, 2026
                     </p>
                   </div>
                   <div className="overflow-hidden pb-1">
-                    <p className="text-[10px] md:text-xs uppercase tracking-[0.25em] text-[#844C44] font-sans font-semibold animate-reveal-text delay-[750ms] [animation-fill-mode:forwards] opacity-0">
+                    <p className="text-[10px] md:text-xs uppercase tracking-[0.25em] text-[#844C44] font-sans font-semibold animate-reveal-text opacity-0 [animation-fill-mode:forwards]" style={{ animationDelay: '800ms' }}>
                       At One-Thirty in the Afternoon <span className="opacity-60 lowercase font-serif italic tracking-normal ml-1 text-xs">(1:30 pm)</span>
                     </p>
                   </div>
@@ -268,6 +275,13 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                         Gaya-Gaya, San Jose del Monte Bulacan
                       </p>
                     </div>
+                    {/* NEW: Location Clickable Link Added Here */}
+                    <div className="pt-3 animate-fade-in delay-[1600ms] [animation-fill-mode:forwards] opacity-0">
+                      <a href="https://maps.app.goo.gl/PFarYAVLWHY7rthDA?g_st=ic" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-5 py-2 border border-[#B58382]/50 hover:border-[#844C44] bg-white/50 hover:bg-[#844C44] text-[#844C44] hover:text-white text-[10px] uppercase tracking-[0.2em] font-semibold rounded-full transition-all duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        Open in Maps
+                      </a>
+                    </div>
                   </div>
                 </div>
 
@@ -287,6 +301,13 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                       <p className="text-stone-500 text-xs leading-relaxed font-sans font-light max-w-sm mx-auto md:mx-0 animate-reveal-text delay-[1900ms] [animation-fill-mode:forwards] opacity-0 uppercase tracking-widest">
                         Santo Cristo, San Jose del Monte City Bulacan
                       </p>
+                    </div>
+                    {/* NEW: Reception Clickable Link Added Here */}
+                    <div className="pt-3 animate-fade-in delay-[1950ms] [animation-fill-mode:forwards] opacity-0">
+                      <a href="https://maps.app.goo.gl/x9dCiQf1WV1o992U8?g_st=ic" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 px-5 py-2 border border-[#B58382]/50 hover:border-[#844C44] bg-white/50 hover:bg-[#844C44] text-[#844C44] hover:text-white text-[10px] uppercase tracking-[0.2em] font-semibold rounded-full transition-all duration-300">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                        Open in Maps
+                      </a>
                     </div>
                   </div>
                   <button 
@@ -479,7 +500,7 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
 
           {/* Tail Signature Branding Accent */}
           <footer className={`text-center pt-8 opacity-60 select-none pointer-events-none transition-opacity duration-700 ${!showRsvp ? 'animate-fade-in delay-[3200ms] [animation-fill-mode:forwards] opacity-0' : 'opacity-100'}`}>
-            <p className="font-serif text-xs italic tracking-widest text-[#3A2522] bg-white/30 inline-block px-3 py-1 rounded-full">Arlan Dave &amp; Rei Marie Anne • 2026</p>
+            <p className="font-serif text-xs italic tracking-widest text-[#3A2522] bg-white/30 inline-block px-3 py-1 rounded-full">Arlan Dave & Rei Marie Anne • 2026</p>
           </footer>
 
         </div>

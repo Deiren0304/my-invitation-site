@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     siteName: "Canales Wedding Invitation",
     images: [
       {
-        url: "/og-image.png",
+        url: "/ogss-image.png",
         width: 1200,
         height: 630,
         alt: "Arlan Dave & Rei Marie Anne - Wedding Invitation",
