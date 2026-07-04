@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     siteName: "Canales Wedding Invitation",
     images: [
       {
-        url: "/og-images.png",
+        url: "/ogi-image.png",
         width: 1200,
         height: 630,
         alt: "Arlan Dave & Rei Marie Anne - Wedding Invitation",
@@ -41,7 +41,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Arlan Dave & Rei Marie Anne - Wedding Invitation",
     description: "Join us in celebrating our special day.",
-    images: ["/og-images.png"],
+    images: ["/ogi-image.png"],
   },
 };
 
