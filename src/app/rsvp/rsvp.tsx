@@ -143,10 +143,10 @@ export default function RsvpForm() {
             {/* FIXED: Removed overflow-hidden and forced 1 straight line */}
             <div className="pb-2 px-2 w-full flex justify-center">
               <h1
-                className="font-roxborough text-[#F5EBE1] italic tracking-wide leading-none whitespace-nowrap drop-shadow-sm opacity-0 animate-reveal-text delay-[300ms] [animation-fill-mode:forwards]"
+                className="font-roxborough text-[#F5EBE1] tracking-wide leading-none whitespace-nowrap drop-shadow-sm opacity-0 animate-reveal-text delay-[300ms] [animation-fill-mode:forwards]"
                 style={{ fontSize: "clamp(1.4rem, 4.5vw, 3.5rem)" }}
               >
-                Arlan Dave <span className="text-[#EADCCF]/70 font-light mx-1 md:mx-2">&amp;</span> Rei Marie Anne
+                ARLAN DAVE <span className="text-[#EADCCF]/70 font-light mx-1 md:mx-2">&amp;</span> REI MARIE ANNE
               </h1>
             </div>
 

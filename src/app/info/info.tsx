@@ -179,10 +179,10 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                     </div>
                     
                     <div className="overflow-hidden pb-2 px-2">
-                      <h1 className="font-roxborough text-4xl sm:text-5xl md:text-6xl text-[#F5EBE1] font-normal tracking-wide italic drop-shadow-sm leading-[1.3] md:leading-none animate-reveal-text delay-[300ms] [animation-fill-mode:forwards] opacity-0">
-                        <span className="block md:inline">Arlan Dave</span>
+                      <h1 className="font-roxborough text-4xl sm:text-5xl md:text-6xl text-[#F5EBE1] font-normal tracking-wide drop-shadow-sm leading-[1.3] md:leading-none animate-reveal-text delay-[300ms] [animation-fill-mode:forwards] opacity-0">
+                        <span className="block md:inline">ARLAN DAVE</span>
                         <span className="block md:inline text-3xl md:text-5xl text-[#EADCCF]/70 font-light mx-3 my-1 md:my-0">&</span>
-                        <span className="block md:inline">Rei Marie Anne</span>
+                        <span className="block md:inline">REI MARIE ANNE</span>
                       </h1>
                     </div>
                     
@@ -255,12 +255,12 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                         </div>
                       </button>
                       <button 
-                        onClick={() => openLightbox("/11.jpg", "Engagement Portrait")}
+                        onClick={() => openLightbox("/8.jpg", "Engagement Portrait")}
                         className="relative aspect-[3/4] bg-white/80 backdrop-blur-sm p-3.5 rounded-2xl shadow-[0_12px_24px_rgba(0,0,0,0.1)] border border-white/30 transform rotate-1 hover:rotate-0 hover:-translate-y-1 transition-all duration-700 ease-out group overflow-hidden cursor-pointer w-full text-left"
                       >
                         <div className="w-full h-full bg-[#EADCCF]/60 rounded-xl flex flex-col items-center justify-center relative overflow-hidden">
                           <img 
-                            src="/11.jpg" 
+                            src="/8.jpg" 
                             alt="Engagement Portrait 2"
                             className="absolute inset-0 w-full h-full object-cover opacity-0 transition-all duration-1000 group-hover:scale-105"
                             onLoad={(e) => e.currentTarget.classList.remove('opacity-0')}
@@ -399,33 +399,53 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                     </div>
 
                     <div className="bg-white/90 backdrop-blur-md rounded-3xl overflow-hidden border border-white/40 shadow-[0_12px_45px_rgba(0,0,0,0.1)] p-2 transition-all duration-500">
-                      <div className="border border-[#B58382]/40 rounded-2xl p-8 md:p-14 flex flex-col items-center text-center relative overflow-hidden bg-gradient-to-b from-white/60 to-transparent">
-                        <div className="animate-reveal-text delay-[2500ms] [animation-fill-mode:forwards] opacity-0">
-                          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#844C44" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" className="mb-5 opacity-80">
-                            <polyline points="20 12 20 22 4 22 4 12"></polyline>
-                            <rect x="2" y="7" width="20" height="5"></rect>
-                            <line x1="12" y1="22" x2="12" y2="7"></line>
-                            <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
-                            <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
-                          </svg>
-                        </div>
-                        <div className="overflow-hidden pb-3 mb-2">
-                          <h2 className="font-roxborough text-3xl md:text-4xl text-[#3A2522] tracking-wider italic animate-reveal-text delay-[2600ms] [animation-fill-mode:forwards] opacity-0">Gift Note</h2>
-                        </div>
-                        <div className="h-px w-16 bg-[#B58382]/50 mb-8 animate-fade-in delay-[2650ms] [animation-fill-mode:forwards] opacity-0"></div>
-                        <div className="space-y-3 text-stone-700 text-sm md:text-base leading-loose font-roxborough max-w-lg mx-auto animate-fade-in delay-[2700ms] [animation-fill-mode:forwards] opacity-0">
-                          <p className="italic text-[#3A2522] font-medium">With all that we have, we've been truly blessed.</p>
-                          <p className="italic text-[#3A2522] font-medium">Your presence and prayers are all that we request.</p>
-                          <p className="italic text-[#3A2522] font-medium">But if you desire to give nonetheless,</p>
-                          <p className="italic text-[#3A2522] font-medium">A monetary gift is one we suggest.</p>
-                        </div>
-                      </div>
-                    </div>
+  <div className="border border-[#B58382]/40 rounded-2xl p-8 md:p-14 flex flex-col items-center text-center relative overflow-hidden bg-gradient-to-b from-white/60 to-transparent">
+    
+    {/* PROFESSIONAL GIFT BOX ICON */}
+    <div className="animate-reveal-text delay-[2400ms] [animation-fill-mode:forwards] opacity-0">
+      <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#844C44" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" className="mb-5 opacity-80">
+        <polyline points="20 12 20 22 4 22 4 12"></polyline>
+        <rect x="2" y="7" width="20" height="5"></rect>
+        <line x1="12" y1="22" x2="12" y2="7"></line>
+        <path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"></path>
+        <path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"></path>
+      </svg>
+    </div>
+
+    {/* Main Title */}
+    <div className="overflow-hidden pb-4 mb-2">
+      <h2 className="font-roxborough text-3xl md:text-4xl text-[#3A2522] tracking-[0.15em] uppercase animate-reveal-text delay-[2500ms] [animation-fill-mode:forwards] opacity-0">
+        Gentle Reminder
+      </h2>
+    </div>
+
+    {/* Gift Guide Section */}
+    <div className="space-y-4 mb-10 w-full animate-fade-in delay-[2600ms] [animation-fill-mode:forwards] opacity-0">
+      <h3 className="font-roxborough text-base md:text-lg text-[#3A2522] tracking-[0.2em] font-semibold uppercase">
+        Gift Guide
+      </h3>
+      <p className="text-stone-700 text-[13px] md:text-[15px] leading-[2.2] font-arapey max-w-md mx-auto tracking-wide">
+        With all that we have, we feel truly blessed. Your presence and prayers are all that we request. But if you still wish to give nonetheless, a monetary gift is what we humbly suggest.
+      </p>
+    </div>
+
+    {/* Special Note Section */}
+    <div className="space-y-4 w-full animate-fade-in delay-[2700ms] [animation-fill-mode:forwards] opacity-0">
+      <h3 className="font-roxborough text-base md:text-lg text-[#3A2522] tracking-[0.2em] font-semibold uppercase">
+        Special Note
+      </h3>
+      <p className="text-stone-700 text-[13px] md:text-[15px] leading-[2.2] font-arapey max-w-md mx-auto tracking-wide">
+        While we adore your little one, we kindly ask that our wedding be an adults-only occasion.
+      </p>
+    </div>
+
+  </div>
+</div>
 
                     <div className="bg-white/80 backdrop-blur-md rounded-3xl overflow-hidden border border-white/30 shadow-[0_12px_40px_rgba(0,0,0,0.1)] hover:shadow-[0_15px_50px_rgba(0,0,0,0.15)] transition-all duration-500 relative">
                       <div className="p-8 md:p-14 flex flex-col items-center text-center bg-gradient-to-t from-white/40 to-transparent">
                         <div className="overflow-hidden pb-3 mb-6">
-                          <h2 className="font-roxborough text-3xl md:text-4xl text-[#3A2522] tracking-wider italic animate-reveal-text delay-[2800ms] [animation-fill-mode:forwards] opacity-0">Gentle Reminders</h2>
+                          <h2 className="font-roxborough text-3xl md:text-4xl text-[#3A2522] tracking-wider italic animate-reveal-text delay-[2800ms] [animation-fill-mode:forwards] opacity-0">Additional Reminders</h2>
                         </div>
                         
                         <div className="flex flex-col md:flex-row w-full max-w-2xl justify-center items-center gap-10 md:gap-12 mb-14 animate-fade-in delay-[2900ms] [animation-fill-mode:forwards] opacity-0">
