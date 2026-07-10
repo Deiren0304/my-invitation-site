@@ -13,9 +13,14 @@ export default function ImageGallery({ onBack }: ImageGalleryProps) {
   // Generate 30 Images mapping to local files 1.jpg to 30.jpg in your public folder
   const galleryImages = Array.from({ length: 30 }).map((_, i) => ({
     id: i + 1,
-    src: `/${i + 1}.jpg`, // This looks for /public/1.jpg, /public/2.jpg, etc.
+    src: `/${i + 1}.jpg`, 
     alt: `Wedding Memory ${i + 1}`,
   }));
+
+  // FORCES SCROLL TO TOP WHEN MOUNTED
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   // Scroll Reveal Animation Logic
   useEffect(() => {
@@ -73,28 +78,21 @@ export default function ImageGallery({ onBack }: ImageGalleryProps) {
 
   return (
     <>
-      {/* FIXED BACKGROUND MOVED HERE - Matching info.tsx perfectly */}
-      <div className="fixed inset-0 w-screen h-[100dvh] -z-10 bg-[#F5EBE1]">
-        <img
-          src="/heross.svg"
-          alt="Wedding Background"
-          className="absolute inset-0 w-full h-full object-cover object-center md:object-top"
-        />
-        <div className="absolute inset-0 bg-white/20 backdrop-blur-[1px]"></div>
-      </div>
+      {/* NEW SOLID COLOR BACKGROUND */}
+      <div className="fixed inset-0 w-screen h-[100dvh] -z-10 bg-[#825656]"></div>
 
       <main className="min-h-screen w-full flex flex-col items-center justify-start py-12 px-4 md:px-12 lg:px-24 bg-transparent text-[#3A2522] selection:bg-[#B58382]/20">
         
         {/* Gallery Header */}
         <header className="text-center space-y-4 mb-12 md:mb-16 mt-4 w-full max-w-3xl">
           <p 
-            className="tracking-[0.35em] uppercase text-[10px] md:text-xs text-[#844C44] font-medium animate-fade-in"
+            className="tracking-[0.35em] uppercase text-[10px] md:text-xs text-[#EADCCF] font-arapey font-medium animate-fade-in"
             style={{ animationDelay: '100ms' }}
           >
             A Glimpse into our Love Story
           </p>
           <h1 
-            className="font-serif text-4xl md:text-5xl lg:text-6xl text-[#3A2522] tracking-wide italic drop-shadow-sm animate-fade-in"
+            className="font-roxborough text-4xl md:text-5xl lg:text-6xl text-[#F5EBE1] tracking-wide italic drop-shadow-sm animate-fade-in"
             style={{ animationDelay: '300ms' }}
           >
             The Gallery
@@ -105,9 +103,9 @@ export default function ImageGallery({ onBack }: ImageGalleryProps) {
             className="flex items-center justify-center space-x-3 pt-2 animate-fade-in"
             style={{ animationDelay: '500ms' }}
           >
-            <div className="h-px w-16 md:w-24 bg-gradient-to-r from-transparent to-[#B58382]/60"></div>
-            <span className="text-[10px] text-[#B58382] mb-0.5">✦</span>
-            <div className="h-px w-16 md:w-24 bg-gradient-to-l from-transparent to-[#B58382]/60"></div>
+            <div className="h-px w-16 md:w-24 bg-gradient-to-r from-transparent to-[#EADCCF]/40"></div>
+            <span className="text-[10px] text-[#EADCCF]/60 mb-0.5">✦</span>
+            <div className="h-px w-16 md:w-24 bg-gradient-to-l from-transparent to-[#EADCCF]/40"></div>
           </div>
         </header>
 
@@ -117,9 +115,9 @@ export default function ImageGallery({ onBack }: ImageGalleryProps) {
             <button
               key={image.id}
               onClick={() => openLightbox(image.src, image.alt)}
-              className="scroll-reveal opacity-0 translate-y-12 transition-all duration-1000 ease-out group relative aspect-[3/4] md:aspect-[3/4] bg-white/60 backdrop-blur-sm p-3 md:p-3 rounded-2xl shadow-[0_8px_24px_rgba(0,0,0,0.02)] border border-white/60 overflow-hidden cursor-pointer w-full text-left hover:-translate-y-2 hover:shadow-[0_15px_35px_rgba(0,0,0,0.05)]"
+              className="scroll-reveal opacity-0 translate-y-12 transition-all duration-1000 ease-out group relative aspect-[3/4] md:aspect-[3/4] bg-white/10 backdrop-blur-md p-3 md:p-3 rounded-2xl shadow-lg border border-white/20 overflow-hidden cursor-pointer w-full text-left hover:-translate-y-2 hover:shadow-xl"
             >
-              <div className="w-full h-full bg-[#EADCCF]/40 rounded-xl relative overflow-hidden">
+              <div className="w-full h-full bg-[#3A2522]/40 rounded-xl relative overflow-hidden">
                 <img
                   src={image.src}
                   alt={image.alt}
@@ -127,7 +125,7 @@ export default function ImageGallery({ onBack }: ImageGalleryProps) {
                   className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-110"
                 />
                 {/* Hover Overlay */}
-                <div className="absolute inset-0 bg-[#3A2522]/0 group-hover:bg-[#3A2522]/20 transition-colors duration-500 flex items-center justify-center">
+                <div className="absolute inset-0 bg-[#3A2522]/0 group-hover:bg-[#3A2522]/30 transition-colors duration-500 flex items-center justify-center">
                   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 scale-50 group-hover:scale-100 transform drop-shadow-md">
                     <polyline points="15 3 21 3 21 9"></polyline>
                     <polyline points="9 21 3 21 3 15"></polyline>
@@ -144,7 +142,7 @@ export default function ImageGallery({ onBack }: ImageGalleryProps) {
         <div className="w-full flex flex-col items-center animate-in fade-in slide-in-from-bottom-8 duration-700 ease-out mt-4 md:mt-10 mb-12">
           <button 
             onClick={onBack}
-            className="mt-10 text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-[#844C44] hover:text-[#3A2522] transition-colors underline underline-offset-4 cursor-pointer font-semibold bg-white/50 px-4 py-2 rounded-full backdrop-blur-sm"
+            className="mt-10 text-[10px] md:text-[11px] uppercase tracking-[0.2em] text-[#F5EBE1] hover:text-white transition-colors underline underline-offset-4 cursor-pointer font-arapey font-semibold px-4 py-2"
           >
             Back to Invitation Details
           </button>
@@ -177,12 +175,21 @@ export default function ImageGallery({ onBack }: ImageGalleryProps) {
               </svg>
             </button>
 
+            <div className="flex-shrink-0 w-full flex flex-col items-center pt-2 px-8">
+              <h2 className="font-roxborough text-2xl md:text-3xl text-[#3A2522] font-semibold text-center mb-1 italic">
+                {activeLightbox.alt}
+              </h2>
+              <p className="text-[#844C44] text-[10px] md:text-[11px] uppercase tracking-[0.2em] font-bold font-arapey text-center border-b border-[#3A2522]/10 pb-3 mb-4 md:mb-6 w-full max-w-[200px]">
+                Gallery View
+              </p>
+            </div>
+
             {/* Modal Image */}
-            <div className="flex justify-center items-center overflow-hidden pt-6 md:pt-4">
+            <div className="flex justify-center items-center overflow-hidden">
               <img
                 src={activeLightbox.src}
                 alt={activeLightbox.alt}
-                className="w-auto h-auto max-w-full max-h-[65vh] md:max-h-[75vh] rounded-lg shadow-sm"
+                className="w-auto h-auto max-w-full max-h-[60vh] md:max-h-[70vh] rounded-lg shadow-sm"
               />
             </div>
           </div>
@@ -191,6 +198,10 @@ export default function ImageGallery({ onBack }: ImageGalleryProps) {
 
       {/* Inline styles for custom animations */}
       <style jsx global>{`
+        /* Load your custom fonts */
+        .font-roxborough { font-family: 'RoxboroughCF', serif; }
+        .font-arapey { font-family: 'Arapey', serif; }
+        
         @keyframes fadeIn {
           0% { opacity: 0; transform: translateY(10px); }
           100% { opacity: 1; transform: translateY(0); }

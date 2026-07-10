@@ -133,39 +133,24 @@ export default function RsvpForm() {
       {step === 1 && (
         <div className="flex flex-col items-center w-full">
           
-          {/* Elegant Floating Typography Header */}
           <div className="text-center space-y-4 mb-8 w-full pt-1">
             <div className="overflow-hidden pb-1">
-              <p className="tracking-[0.4em] uppercase text-[9px] md:text-[10px] text-[#844C44] font-semibold opacity-0 animate-reveal-text delay-[150ms] [animation-fill-mode:forwards]">
+              <p className="tracking-[0.4em] uppercase text-[9px] md:text-[10px] text-[#EADCCF] font-semibold opacity-0 animate-reveal-text delay-[150ms] [animation-fill-mode:forwards]">
                 RSVP for the Wedding of
               </p>
             </div>
-            <div className="overflow-hidden pb-2 px-2">
-  <h1
-    className="
-      font-serif
-      text-[1.35rem]
-      xs:text-[1.45rem]
-      sm:text-4xl
-      md:text-5xl
-      text-[#3A2522]
-      italic
-      tracking-tight
-      sm:tracking-wide
-      leading-none
-      whitespace-nowrap
-      drop-shadow-sm
-      opacity-0
-      animate-reveal-text
-      delay-[300ms]
-      [animation-fill-mode:forwards]
-    "
-    style={{ fontSize: "clamp(1.3rem, 5vw, 3rem)" }}
-  >
-    Arlan Dave &amp; Rei Marie Anne
-  </h1>
-</div>
-            <div className="h-px w-12 bg-[#B58382]/30 mx-auto mt-2 opacity-0 animate-fade-in delay-[450ms] [animation-fill-mode:forwards]"></div>
+            
+            {/* FIXED: Removed overflow-hidden and forced 1 straight line */}
+            <div className="pb-2 px-2 w-full flex justify-center">
+              <h1
+                className="font-roxborough text-[#F5EBE1] italic tracking-wide leading-none whitespace-nowrap drop-shadow-sm opacity-0 animate-reveal-text delay-[300ms] [animation-fill-mode:forwards]"
+                style={{ fontSize: "clamp(1.4rem, 4.5vw, 3.5rem)" }}
+              >
+                Arlan Dave <span className="text-[#EADCCF]/70 font-light mx-1 md:mx-2">&amp;</span> Rei Marie Anne
+              </h1>
+            </div>
+
+            <div className="h-px w-12 bg-[#EADCCF]/30 mx-auto mt-2 opacity-0 animate-fade-in delay-[450ms] [animation-fill-mode:forwards]"></div>
           </div>
 
           {/* Search Form Card */}
@@ -181,15 +166,15 @@ export default function RsvpForm() {
 
             <div className="text-center space-y-2 pb-5 pt-1">
               <div className="overflow-hidden pb-1">
-                <h2 className="font-serif text-xl md:text-2xl text-[#3A2522] tracking-wide opacity-0 animate-reveal-text delay-[750ms] [animation-fill-mode:forwards]">Find Your Invitation</h2>
+                <h2 className="font-roxborough text-xl md:text-2xl text-[#3A2522] tracking-wide opacity-0 animate-reveal-text delay-[750ms] [animation-fill-mode:forwards]">Find Your Invitation</h2>
               </div>
               <div className="overflow-hidden pb-1">
-                <p className="text-stone-500 text-xs font-sans max-w-xs mx-auto leading-relaxed opacity-0 animate-reveal-text delay-[900ms] [animation-fill-mode:forwards]">Please enter your first and last name exactly as it appears on your envelope.</p>
+                <p className="text-stone-500 text-xs font-arapey max-w-xs mx-auto leading-relaxed opacity-0 animate-reveal-text delay-[900ms] [animation-fill-mode:forwards]">Please enter your first and last name exactly as it appears on your envelope.</p>
               </div>
             </div>
 
             <div className="space-y-2 mb-6 opacity-0 animate-fade-in delay-[1050ms] [animation-fill-mode:forwards]">
-              <label htmlFor="searchQuery" className="block text-[10px] md:text-xs uppercase tracking-[0.25em] font-semibold text-[#844C44] font-sans">
+              <label htmlFor="searchQuery" className="block text-[10px] md:text-xs uppercase tracking-[0.25em] font-semibold text-[#844C44] font-arapey">
                 Full Name
               </label>
               <input
@@ -197,13 +182,13 @@ export default function RsvpForm() {
                 id="searchQuery"
                 required
                 disabled={isSearching}
-                className="w-full px-5 py-3.5 rounded-xl border border-stone-200/80 focus:ring-1 focus:ring-[#844C44] focus:border-[#844C44] outline-none text-stone-800 transition-all duration-300 text-sm font-sans bg-white/90 shadow-2xs hover:border-[#B58382]/40 placeholder:text-stone-400 placeholder:italic placeholder:font-serif disabled:opacity-50"
+                className="w-full px-5 py-3.5 rounded-xl border border-stone-200/80 focus:ring-1 focus:ring-[#844C44] focus:border-[#844C44] outline-none text-stone-800 transition-all duration-300 text-sm font-arapey bg-white/90 shadow-2xs hover:border-[#B58382]/40 placeholder:text-stone-400 placeholder:italic placeholder:font-roxborough disabled:opacity-50"
                 placeholder="e.g., John Doe"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
               />
               {searchError && (
-                <p className="text-[#844C44] text-[11px] pt-2 font-serif italic animate-in fade-in">{searchError}</p>
+                <p className="text-[#844C44] text-[11px] pt-2 font-roxborough italic animate-in fade-in">{searchError}</p>
               )}
             </div>
 
@@ -211,7 +196,7 @@ export default function RsvpForm() {
               <button
                 type="submit"
                 disabled={isSearching}
-                className="w-full bg-[#844C44] hover:bg-[#6D3C36] disabled:bg-stone-400 disabled:cursor-not-allowed text-white font-serif tracking-[0.15em] uppercase text-xs py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer hover:-translate-y-0.5 active:translate-y-0 select-none font-semibold flex justify-center items-center mt-auto"
+                className="w-full bg-[#844C44] hover:bg-[#6D3C36] disabled:bg-stone-400 disabled:cursor-not-allowed text-white font-roxborough tracking-[0.15em] uppercase text-xs py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer hover:-translate-y-0.5 active:translate-y-0 select-none font-semibold flex justify-center items-center mt-auto"
               >
                 {isSearching ? "Searching Records..." : "Find Invitation"}
               </button>
@@ -235,13 +220,13 @@ export default function RsvpForm() {
           {/* Form Header */}
           <div className="text-center space-y-2 border-b border-[#B58382]/20 pb-6 pt-2">
             <div className="overflow-hidden pb-1">
-              <p className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#B58382] font-sans opacity-0 animate-reveal-text delay-[150ms] [animation-fill-mode:forwards]">Welcome,</p>
+              <p className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#B58382] font-arapey opacity-0 animate-reveal-text delay-[150ms] [animation-fill-mode:forwards]">Welcome,</p>
             </div>
             <div className="overflow-hidden pb-1">
-              <h2 className="font-serif text-2xl text-[#3A2522] tracking-wide italic capitalize opacity-0 animate-reveal-text delay-[300ms] [animation-fill-mode:forwards]">{matchedName}</h2>
+              <h2 className="font-roxborough text-2xl text-[#3A2522] tracking-wide italic capitalize opacity-0 animate-reveal-text delay-[300ms] [animation-fill-mode:forwards]">{matchedName}</h2>
             </div>
             <div className="overflow-hidden pt-1 pb-1">
-              <p className="text-stone-600 text-xs font-sans opacity-0 animate-reveal-text delay-[450ms] [animation-fill-mode:forwards]">
+              <p className="text-stone-600 text-xs font-arapey opacity-0 animate-reveal-text delay-[450ms] [animation-fill-mode:forwards]">
                 We have reserved <span className="font-semibold text-[#844C44]">{allocatedSeats}</span> seat{allocatedSeats > 1 ? 's' : ''} in your honor.
               </p>
             </div>
@@ -249,7 +234,7 @@ export default function RsvpForm() {
 
           {/* Attendance Toggle */}
           <div className="space-y-3 opacity-0 animate-fade-in delay-[600ms] [animation-fill-mode:forwards]">
-            <label className="block text-[10px] md:text-xs uppercase tracking-[0.25em] font-semibold text-[#844C44] font-sans text-center">
+            <label className="block text-[10px] md:text-xs uppercase tracking-[0.25em] font-semibold text-[#844C44] font-arapey text-center">
               Will you attend?
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -262,7 +247,7 @@ export default function RsvpForm() {
                   checked={formData.attending === "yes"}
                   onChange={(e) => setFormData({ ...formData, attending: e.target.value })}
                 />
-                <div className="text-center py-4 text-sm rounded-xl border border-stone-200/80 text-stone-600 bg-white/90 peer-checked:bg-[#844C44] peer-checked:text-white peer-checked:border-[#844C44] peer-checked:shadow-md hover:border-[#844C44]/40 transition-all duration-300 font-sans font-medium tracking-wide group-hover/radio:-translate-y-0.5">
+                <div className="text-center py-4 text-sm rounded-xl border border-stone-200/80 text-stone-600 bg-white/90 peer-checked:bg-[#844C44] peer-checked:text-white peer-checked:border-[#844C44] peer-checked:shadow-md hover:border-[#844C44]/40 transition-all duration-300 font-arapey font-medium tracking-wide group-hover/radio:-translate-y-0.5">
                   Joyfully Accepts
                 </div>
               </label>
@@ -276,7 +261,7 @@ export default function RsvpForm() {
                   checked={formData.attending === "no"}
                   onChange={(e) => setFormData({ ...formData, attending: e.target.value })}
                 />
-                <div className="text-center py-4 text-sm rounded-xl border border-stone-200/80 text-stone-600 bg-white/90 peer-checked:bg-[#844C44] peer-checked:text-white peer-checked:border-[#844C44] peer-checked:shadow-md hover:border-[#844C44]/40 transition-all duration-300 font-sans font-medium tracking-wide group-hover/radio:-translate-y-0.5">
+                <div className="text-center py-4 text-sm rounded-xl border border-stone-200/80 text-stone-600 bg-white/90 peer-checked:bg-[#844C44] peer-checked:text-white peer-checked:border-[#844C44] peer-checked:shadow-md hover:border-[#844C44]/40 transition-all duration-300 font-arapey font-medium tracking-wide group-hover/radio:-translate-y-0.5">
                   Regretfully Declines
                 </div>
               </label>
@@ -289,13 +274,13 @@ export default function RsvpForm() {
               
               {allocatedSeats > 1 && (
                 <div className="space-y-2">
-                  <label htmlFor="attendingCount" className="block text-[10px] md:text-xs uppercase tracking-[0.25em] font-semibold text-[#844C44] font-sans">
+                  <label htmlFor="attendingCount" className="block text-[10px] md:text-xs uppercase tracking-[0.25em] font-semibold text-[#844C44] font-arapey">
                     How many guests will be attending?
                   </label>
                   <div className="relative">
                     <select
                       id="attendingCount"
-                      className="w-full px-5 py-3.5 rounded-xl border border-stone-200/80 focus:ring-1 focus:ring-[#844C44] outline-none bg-white/90 text-stone-800 text-sm font-sans shadow-2xs hover:border-[#B58382]/40 transition-all appearance-none cursor-pointer"
+                      className="w-full px-5 py-3.5 rounded-xl border border-stone-200/80 focus:ring-1 focus:ring-[#844C44] outline-none bg-white/90 text-stone-800 text-sm font-arapey shadow-2xs hover:border-[#B58382]/40 transition-all appearance-none cursor-pointer"
                       value={formData.attendingCount}
                       onChange={(e) => handleAttendingCountChange(Number(e.target.value))}
                     >
@@ -312,7 +297,7 @@ export default function RsvpForm() {
 
               {/* Dynamic Name Inputs */}
               <div className="space-y-4">
-                <label className="block text-[10px] md:text-xs uppercase tracking-[0.25em] font-semibold text-[#844C44] font-sans">
+                <label className="block text-[10px] md:text-xs uppercase tracking-[0.25em] font-semibold text-[#844C44] font-arapey">
                   Guest Names
                 </label>
                 {Array.from({ length: formData.attendingCount }).map((_, index) => (
@@ -320,7 +305,7 @@ export default function RsvpForm() {
                     <input
                       type="text"
                       required
-                      className="w-full px-5 py-3.5 rounded-xl border border-stone-200/80 focus:ring-1 focus:ring-[#844C44] focus:border-[#844C44] outline-none text-stone-800 transition-all duration-300 text-sm font-sans bg-white/90 shadow-2xs hover:border-[#B58382]/40 placeholder:text-stone-400 placeholder:italic placeholder:font-serif"
+                      className="w-full px-5 py-3.5 rounded-xl border border-stone-200/80 focus:ring-1 focus:ring-[#844C44] focus:border-[#844C44] outline-none text-stone-800 transition-all duration-300 text-sm font-arapey bg-white/90 shadow-2xs hover:border-[#B58382]/40 placeholder:text-stone-400 placeholder:italic placeholder:font-roxborough"
                       placeholder={`Guest ${index + 1} Full Name`}
                       value={formData.guestNames[index] || ""}
                       onChange={(e) => handleGuestNameChange(index, e.target.value)}
@@ -331,13 +316,13 @@ export default function RsvpForm() {
 
               {/* Notes */}
               <div className="space-y-2">
-                <label htmlFor="notes" className="block text-[10px] md:text-xs uppercase tracking-[0.25em] font-semibold text-[#844C44] font-sans">
+                <label htmlFor="notes" className="block text-[10px] md:text-xs uppercase tracking-[0.25em] font-semibold text-[#844C44] font-arapey">
                   Notes & Dietary Restrictions
                 </label>
                 <textarea
                   id="notes"
                   rows={2}
-                  className="w-full px-5 py-3.5 rounded-xl border border-stone-200/80 focus:ring-1 focus:ring-[#844C44] outline-none resize-none text-stone-800 text-sm font-sans bg-white/90 shadow-2xs hover:border-[#B58382]/40 transition-all placeholder:text-stone-400 placeholder:italic placeholder:font-serif"
+                  className="w-full px-5 py-3.5 rounded-xl border border-stone-200/80 focus:ring-1 focus:ring-[#844C44] outline-none resize-none text-stone-800 text-sm font-arapey bg-white/90 shadow-2xs hover:border-[#B58382]/40 transition-all placeholder:text-stone-400 placeholder:italic placeholder:font-roxborough"
                   placeholder="Optional: Please share any dietary restrictions or messages for the couple."
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
@@ -351,7 +336,7 @@ export default function RsvpForm() {
             <button
               type="submit"
               disabled={isSubmitting}
-              className="w-full bg-[#844C44] hover:bg-[#6D3C36] disabled:bg-stone-400 disabled:cursor-not-allowed text-white font-serif tracking-[0.15em] uppercase text-xs py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer hover:-translate-y-0.5 active:translate-y-0 select-none font-semibold flex justify-center items-center"
+              className="w-full bg-[#844C44] hover:bg-[#6D3C36] disabled:bg-stone-400 disabled:cursor-not-allowed text-white font-roxborough tracking-[0.15em] uppercase text-xs py-4 rounded-xl shadow-md hover:shadow-lg transition-all duration-300 cursor-pointer hover:-translate-y-0.5 active:translate-y-0 select-none font-semibold flex justify-center items-center"
             >
               {isSubmitting ? "Securing Reservation..." : "Confirm RSVP"}
             </button>
@@ -359,7 +344,7 @@ export default function RsvpForm() {
               type="button"
               onClick={() => setStep(1)}
               disabled={isSubmitting}
-              className="w-full text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-[#844C44] transition-colors py-2 font-medium disabled:opacity-50 cursor-pointer"
+              className="w-full text-[10px] uppercase tracking-[0.2em] text-stone-500 hover:text-[#844C44] transition-colors py-2 font-medium font-arapey disabled:opacity-50 cursor-pointer"
             >
               Not {matchedName}? Search Again
             </button>
@@ -378,7 +363,7 @@ export default function RsvpForm() {
           </div>
           
           <div className="overflow-hidden pb-1">
-            <h3 className="font-serif text-3xl text-[#3A2522] font-normal tracking-wide italic opacity-0 animate-reveal-text delay-[300ms] [animation-fill-mode:forwards]">
+            <h3 className="font-roxborough text-3xl text-[#3A2522] font-normal tracking-wide italic opacity-0 animate-reveal-text delay-[300ms] [animation-fill-mode:forwards]">
               Thank You
             </h3>
           </div>
@@ -386,7 +371,7 @@ export default function RsvpForm() {
           <div className="h-px w-16 bg-[#B58382]/40 my-2 opacity-0 animate-fade-in delay-[450ms] [animation-fill-mode:forwards]"></div>
           
           <div className="overflow-hidden pt-1 pb-1">
-            <p className="text-stone-600 text-sm font-light font-sans max-w-sm leading-relaxed opacity-0 animate-reveal-text delay-[600ms] [animation-fill-mode:forwards]">
+            <p className="text-stone-600 text-sm font-light font-arapey max-w-sm leading-relaxed opacity-0 animate-reveal-text delay-[600ms] [animation-fill-mode:forwards]">
               {formData.attending === "yes" 
                 ? "Your response has been graciously received. We look forward to celebrating this special day with you."
                 : "We are so sorry you won't be able to join us, but we sincerely appreciate you letting us know. You will be missed!"}
