@@ -42,14 +42,7 @@ export default function Home() {
     }
   };
 
-  // Reusable Image Accent Component using your flower.png asset
-  const FlowerAccent = ({ className }: { className: string }) => (
-    <img 
-      src="/flowerss.png" 
-      alt="Flower Accent" 
-      className={`absolute w-36 h-36 pointer-events-none drop-shadow-md select-none object-contain transition-transform duration-700 ${className}`}
-    />
-  );
+  
 
   return (
     <>
@@ -109,14 +102,16 @@ export default function Home() {
             </div>
             
             {/* FIXED: Removed overflow-hidden and forced 1 straight line just like RSVP */}
-            <div className="mb-3 py-1 px-4 w-full flex justify-center">
-              <h1
-                className="font-roxborough text-[#F5EBE1] tracking-wide leading-none whitespace-nowrap drop-shadow-sm opacity-0 animate-crisp-reveal"
-                style={{ animationDelay: "350ms", fontSize: "clamp(1.4rem, 4.5vw, 3.5rem)" }}
-              >
-                ARLAN DAVE <span className="text-[#EADCCF]/70 font-light mx-1 md:mx-2">&amp;</span> REI MARIE ANNE
-              </h1>
-            </div>
+            <div className="overflow-hidden mb-3 py-1 px-4 w-full flex justify-center">
+  <h1
+    className="font-californian text-[#F5EBE1] tracking-wide leading-tight drop-shadow-sm opacity-0 animate-crisp-reveal text-center"
+    style={{ animationDelay: "350ms", fontSize: "clamp(2.5rem, 8.5vw, 5.5rem)" }}
+  >
+    <span className="block">ARLAN DAVE</span>
+    <span className="block text-[#EADCCF]/70 font-light text-4xl md:text-6xl my-2">&amp;</span>
+    <span className="block">REI MARIE ANNE</span>
+  </h1>
+</div>
             
             {/* Date Stamp - Sharp Mask Slide Reveal */}
             <div className="overflow-hidden mb-10 py-1 px-2">
@@ -133,11 +128,7 @@ export default function Home() {
               className="relative w-full max-w-sm aspect-[4/3] bg-[#EADCCF]/80 backdrop-blur-md rounded-xl shadow-[0_25px_50px_-12px_rgba(58,37,34,0.25)] border border-white/40 p-2 flex items-center justify-center overflow-visible group opacity-0 animate-clean-fade"
               style={{ animationDelay: "850ms" }}
             >
-              <FlowerAccent className="-top-8 -left-8 rotate-85 group-hover:-translate-x-1 group-hover:-translate-y-1" />
-              <FlowerAccent className="-top-8 -right-8 -rotate-85 scale-x-[-1] group-hover:translate-x-1 group-hover:-translate-y-1" />
-              <FlowerAccent className="-bottom-8 -left-8 rotate-[0deg] group-hover:-translate-x-1 group-hover:translate-y-1" />
-              <FlowerAccent className="-bottom-8 -right-8 -rotate-[-265deg] group-hover:translate-x-1 group-hover:translate-y-1" />
-
+              
               <div className="absolute inset-2 rounded-lg border border-[#B58382]/20 pointer-events-none" />
 
               <svg className="absolute inset-0 w-full h-full text-[#A97C7B]/25 pointer-events-none" viewBox="0 0 400 300" fill="none" stroke="currentColor" strokeWidth="1.5">

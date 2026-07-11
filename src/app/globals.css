@@ -10,6 +10,12 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  
+  /* NEW: Your Custom Wedding Fonts */
+  --font-californian: "Californian FB", serif;
+  --font-arapey: "Arapey", serif;
+  --font-roxborough: "RoxboroughCF", serif;
+  --font-libre: "Libre Baskerville", serif;
 }
 
 @media (prefers-color-scheme: dark) {

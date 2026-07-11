@@ -179,7 +179,10 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                     </div>
                     
                     <div className="overflow-hidden pb-2 px-2">
-                      <h1 className="font-roxborough text-4xl sm:text-5xl md:text-6xl text-[#F5EBE1] font-normal tracking-wide drop-shadow-sm leading-[1.3] md:leading-none animate-reveal-text delay-[300ms] [animation-fill-mode:forwards] opacity-0">
+                      <h1 
+    className="font-californian text-[#F5EBE1] tracking-wide leading-tight drop-shadow-sm text-center opacity-0 animate-reveal-text delay-[300ms] [animation-fill-mode:forwards]"
+    style={{ fontSize: "clamp(1.5rem, 9.5vw, 8.5rem)" }}
+  >
                         <span className="block md:inline">ARLAN DAVE</span>
                         <span className="block md:inline text-3xl md:text-5xl text-[#EADCCF]/70 font-light mx-3 my-1 md:my-0">&</span>
                         <span className="block md:inline">REI MARIE ANNE</span>
@@ -193,20 +196,18 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                     </div>
 
                     <div className="overflow-hidden pb-2 pt-4">
-                      <p className="font-roxborough text-[15px] md:text-lg text-[#F5EBE1]/90 italic animate-reveal-text opacity-0 [animation-fill-mode:forwards]" style={{ animationDelay: '550ms' }}>
-                        Request the honor of your presence as we celebrate our wedding on
+                      <p className="font-roxborough text-[15px] md:text-lg text-[#F5EBE1]/90 animate-reveal-text opacity-0 [animation-fill-mode:forwards]" style={{ animationDelay: '550ms' }}>
+                        BY THE GRACE OF GOD AND WITH THE BLESSINGS OF OUR FAMILY
+
+                        WE INVITE YOU TO JOIN OUR WEDDING
                       </p>
                     </div>
                     
                     <div className="space-y-4 font-roxborough pt-2">
                       <div className="overflow-hidden pb-1">
-                        <p className="text-xl md:text-3xl font-light tracking-widest text-[#F5EBE1] animate-reveal-text opacity-0 [animation-fill-mode:forwards]" style={{ animationDelay: '650ms' }}>
-                          Monday, September 28th, 2026
-                        </p>
-                      </div>
-                      <div className="overflow-hidden pb-1">
-                        <p className="text-[10px] md:text-xs uppercase tracking-[0.25em] text-[#EADCCF] font-arapey font-semibold animate-reveal-text opacity-0 [animation-fill-mode:forwards]" style={{ animationDelay: '800ms' }}>
-                          At One-Thirty in the Afternoon <span className="opacity-70 lowercase font-roxborough italic tracking-normal ml-1 text-xs">(1:30 pm)</span>
+                        <p className="text-sm md:text-3xl font-light tracking-widest text-[#F5EBE1] animate-reveal-text opacity-0 [animation-fill-mode:forwards]" style={{ animationDelay: '650ms' }}>
+                          ON MONDAY, 28TH DAY OF SEPTEMBER 2026
+                          AT 2:00 IN THE AFTERNOON
                         </p>
                       </div>
                     </div>
@@ -242,12 +243,12 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                   <section className="w-full flex flex-col items-center">
                     <div className="w-full grid grid-cols-1 md:grid-cols-2 gap-6">
                       <button 
-                        onClick={() => openLightbox("/3.jpg", "Engagement Portrait")}
+                        onClick={() => openLightbox("/3ss.jpg", "Engagement Portrait")}
                         className="relative aspect-[3/4] bg-white/80 backdrop-blur-sm p-3.5 rounded-2xl shadow-[0_12px_24px_rgba(0,0,0,0.1)] border border-white/30 transform -rotate-1 hover:rotate-0 hover:-translate-y-1 transition-all duration-700 ease-out group overflow-hidden cursor-pointer w-full text-left"
                       >
                         <div className="w-full h-full bg-[#EADCCF]/60 rounded-xl flex flex-col items-center justify-center relative overflow-hidden">
                           <img 
-                            src="/3.jpg" 
+                            src="/3ss.jpg" 
                             alt="Engagement Portrait 1"
                             className="absolute inset-0 w-full h-full object-cover opacity-0 transition-all duration-1000 group-hover:scale-105"
                             onLoad={(e) => e.currentTarget.classList.remove('opacity-0')}
@@ -255,12 +256,12 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                         </div>
                       </button>
                       <button 
-                        onClick={() => openLightbox("/8.jpg", "Engagement Portrait")}
+                        onClick={() => openLightbox("/8ss.jpg", "Engagement Portrait")}
                         className="relative aspect-[3/4] bg-white/80 backdrop-blur-sm p-3.5 rounded-2xl shadow-[0_12px_24px_rgba(0,0,0,0.1)] border border-white/30 transform rotate-1 hover:rotate-0 hover:-translate-y-1 transition-all duration-700 ease-out group overflow-hidden cursor-pointer w-full text-left"
                       >
                         <div className="w-full h-full bg-[#EADCCF]/60 rounded-xl flex flex-col items-center justify-center relative overflow-hidden">
                           <img 
-                            src="/8.jpg" 
+                            src="/8ss.jpg" 
                             alt="Engagement Portrait 2"
                             className="absolute inset-0 w-full h-full object-cover opacity-0 transition-all duration-1000 group-hover:scale-105"
                             onLoad={(e) => e.currentTarget.classList.remove('opacity-0')}
@@ -303,16 +304,16 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                           <div className="text-[10px] uppercase tracking-[0.25em] text-[#B58382] font-bold animate-reveal-text delay-[1250ms] [animation-fill-mode:forwards] opacity-0">Location</div>
                         </div>
                         <div className="overflow-hidden pb-2 mb-1 px-1">
-                          <h2 className="font-roxborough text-2xl text-[#3A2522] tracking-wide animate-reveal-text delay-[1350ms] [animation-fill-mode:forwards] opacity-0">The Ceremony Venue</h2>
+                          <h2 className="font-californian text-2xl text-[#3A2522] tracking-[0.12em] animate-reveal-text delay-[1350ms] [animation-fill-mode:forwards] opacity-0">THE CEREMONY</h2>
                         </div>
                         <div className="overflow-hidden pt-1 pb-1">
-                          <p className="font-medium text-stone-800 text-[13px] md:text-sm animate-reveal-text delay-[1450ms] [animation-fill-mode:forwards] opacity-0 leading-snug">
-                            Iglesia ng Dios kay Cristo Jesus,<br className="hidden md:block" /> Haligi at Suhay ng Katotohanan
+                          <p className="font-arapey text-stone-800 text-[13px] md:text-sm animate-reveal-text delay-[1450ms] [animation-fill-mode:forwards] opacity-0 leading-snug">
+                            IGLESIA NG DIOS KAY CRISTO JESUS,<br className="hidden md:block" /> HALIGI AT SUHAY NG KATOTOHANAN CHAPEL
                           </p>
                         </div>
                         <div className="overflow-hidden pb-1 px-1">
-                          <p className="text-stone-500 text-xs leading-relaxed font-arapey font-light max-w-sm mx-auto md:mx-0 animate-reveal-text delay-[1550ms] [animation-fill-mode:forwards] opacity-0 uppercase tracking-widest">
-                            Gaya-Gaya, San Jose del Monte Bulacan
+                          <p className="text-stone-500 text-xs italic leading-relaxed font-arapey font-light max-w-sm mx-auto md:mx-0 animate-reveal-text delay-[1550ms] [animation-fill-mode:forwards] opacity-0 tracking-widest">
+                            Brgy. Gaya-Gaya, San Jose del Monte, Bulacan
                           </p>
                         </div>
                         <div className="pt-3 animate-fade-in delay-[1600ms] [animation-fill-mode:forwards] opacity-0">
@@ -330,13 +331,13 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                           <div className="text-[10px] uppercase tracking-[0.25em] text-[#B58382] font-bold animate-reveal-text delay-[1600ms] [animation-fill-mode:forwards] opacity-0">Reception</div>
                         </div>
                         <div className="overflow-hidden pb-2 mb-1 px-1">
-                          <h2 className="font-roxborough text-2xl text-[#3A2522] tracking-wide animate-reveal-text delay-[1700ms] [animation-fill-mode:forwards] opacity-0">The Celebration Dinner</h2>
+                          <h2 className="font-californian text-2xl text-[#3A2522] tracking-[0.12em] animate-reveal-text delay-[1350ms] [animation-fill-mode:forwards] opacity-0">THE RECEPTION</h2>
                         </div>
                         <div className="overflow-hidden pt-1 pb-1">
-                          <p className="font-medium text-stone-800 text-[13px] md:text-sm animate-reveal-text delay-[1800ms] [animation-fill-mode:forwards] opacity-0">Villa Leonora Resort</p>
+                          <p className="font-arapey text-stone-800 text-[13px] md:text-sm animate-reveal-text delay-[1800ms] [animation-fill-mode:forwards] opacity-0">VILLA LEONORA RESORT</p>
                         </div>
                         <div className="overflow-hidden pb-1 px-1">
-                          <p className="text-stone-500 text-xs leading-relaxed font-arapey font-light max-w-sm mx-auto md:mx-0 animate-reveal-text delay-[1900ms] [animation-fill-mode:forwards] opacity-0 uppercase tracking-widest">
+                          <p className="text-stone-500 text-xs italic leading-relaxed font-arapey font-light max-w-sm mx-auto md:mx-0 animate-reveal-text delay-[1900ms] [animation-fill-mode:forwards] opacity-0 tracking-widest">
                             Santo Cristo, San Jose del Monte City Bulacan
                           </p>
                         </div>
