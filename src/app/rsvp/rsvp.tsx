@@ -8,7 +8,8 @@ export default function RsvpForm() {
   const [step, setStep] = useState<1 | 2 | 3>(1); 
   
   // Step 1 State: Search
-  const [searchQuery, setSearchQuery] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [surname, setSurname] = useState("");
   const [searchError, setSearchError] = useState("");
   const [isSearching, setIsSearching] = useState(false);
   
@@ -32,7 +33,8 @@ export default function RsvpForm() {
     setIsSearching(true);
     setSearchError("");
     
-    const query = searchQuery.trim();
+    // Combine first name and surname for the database search
+    const query = `${firstName.trim()} ${surname.trim()}`;
 
     try {
       // .ilike() allows for case-insensitive searching (e.g., "john doe" matches "John Doe")
@@ -43,7 +45,7 @@ export default function RsvpForm() {
         .single();
 
       if (error || !data) {
-        setSearchError("We couldn't find your name. Please try using your full name or family name as written on your physical envelope.");
+        setSearchError("We couldn't find your name. Please try using your first name and surname as written on your physical envelope.");
         setIsSearching(false);
         return;
       }
@@ -142,13 +144,27 @@ export default function RsvpForm() {
             
             {/* FIXED: Removed overflow-hidden and forced 1 straight line */}
             <div className="pb-2 px-2 w-full flex justify-center">
-              <h1
-                className="font-roxborough text-[#F5EBE1] tracking-wide leading-none whitespace-nowrap drop-shadow-sm opacity-0 animate-reveal-text delay-[300ms] [animation-fill-mode:forwards]"
-                style={{ fontSize: "clamp(1.4rem, 4.5vw, 3.5rem)" }}
-              >
-                ARLAN DAVE <span className="text-[#EADCCF]/70 font-light mx-1 md:mx-2">&amp;</span> REI MARIE ANNE
-              </h1>
-            </div>
+  <h1
+    className="font-californian text-[#F5EBE1] tracking-wide leading-tight text-center drop-shadow-sm opacity-0 animate-reveal-text delay-[300ms] [animation-fill-mode:forwards]"
+    style={{ fontSize: "clamp(1.5rem, 9vw, 8.5rem)" }}
+  >
+    <span className="block">ARLAN DAVE</span>
+
+    <span
+      className="block text-[#EADCCF]/70 font-light leading-none my-1"
+      style={{ fontSize: "0.55em" }}
+    >
+      &amp;
+    </span>
+
+    <span
+      className="block whitespace-nowrap"
+      style={{ fontSize: "0.95em" }}
+    >
+      REI MARIE ANNE
+    </span>
+  </h1>
+</div>
 
             <div className="h-px w-12 bg-[#EADCCF]/30 mx-auto mt-2 opacity-0 animate-fade-in delay-[450ms] [animation-fill-mode:forwards]"></div>
           </div>
@@ -169,24 +185,43 @@ export default function RsvpForm() {
                 <h2 className="font-roxborough text-xl md:text-2xl text-[#3A2522] tracking-wide opacity-0 animate-reveal-text delay-[750ms] [animation-fill-mode:forwards]">Find Your Invitation</h2>
               </div>
               <div className="overflow-hidden pb-1">
-                <p className="text-stone-500 text-xs font-arapey max-w-xs mx-auto leading-relaxed opacity-0 animate-reveal-text delay-[900ms] [animation-fill-mode:forwards]">Please enter your first and last name exactly as it appears on your envelope.</p>
+                <p className="text-stone-500 text-xs font-arapey max-w-xs mx-auto leading-relaxed opacity-0 animate-reveal-text delay-[900ms] [animation-fill-mode:forwards]">Please enter your first and last name to find your invitation.</p>
               </div>
             </div>
 
-            <div className="space-y-2 mb-6 opacity-0 animate-fade-in delay-[1050ms] [animation-fill-mode:forwards]">
-              <label htmlFor="searchQuery" className="block text-[10px] md:text-xs uppercase tracking-[0.25em] font-semibold text-[#844C44] font-arapey">
-                Full Name
-              </label>
-              <input
-                type="text"
-                id="searchQuery"
-                required
-                disabled={isSearching}
-                className="w-full px-5 py-3.5 rounded-xl border border-stone-200/80 focus:ring-1 focus:ring-[#844C44] focus:border-[#844C44] outline-none text-stone-800 transition-all duration-300 text-sm font-arapey bg-white/90 shadow-2xs hover:border-[#B58382]/40 placeholder:text-stone-400 placeholder:italic placeholder:font-roxborough disabled:opacity-50"
-                placeholder="e.g., John Doe"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
+            <div className="space-y-4 mb-6 opacity-0 animate-fade-in delay-[1050ms] [animation-fill-mode:forwards]">
+              <div className="space-y-2">
+                <label htmlFor="firstName" className="block text-[10px] md:text-xs uppercase tracking-[0.25em] font-semibold text-[#844C44] font-arapey">
+                  First Name
+                </label>
+                <input
+                  type="text"
+                  id="firstName"
+                  required
+                  disabled={isSearching}
+                  className="w-full px-5 py-3.5 rounded-xl border border-stone-200/80 focus:ring-1 focus:ring-[#844C44] focus:border-[#844C44] outline-none text-stone-800 transition-all duration-300 text-sm font-arapey bg-white/90 shadow-2xs hover:border-[#B58382]/40 placeholder:text-stone-400 placeholder:italic placeholder:font-roxborough disabled:opacity-50"
+                  placeholder="e.g., John"
+                  value={firstName}
+                  onChange={(e) => setFirstName(e.target.value)}
+                />
+              </div>
+
+              <div className="space-y-2">
+                <label htmlFor="surname" className="block text-[10px] md:text-xs uppercase tracking-[0.25em] font-semibold text-[#844C44] font-arapey">
+                  Surname
+                </label>
+                <input
+                  type="text"
+                  id="surname"
+                  required
+                  disabled={isSearching}
+                  className="w-full px-5 py-3.5 rounded-xl border border-stone-200/80 focus:ring-1 focus:ring-[#844C44] focus:border-[#844C44] outline-none text-stone-800 transition-all duration-300 text-sm font-arapey bg-white/90 shadow-2xs hover:border-[#B58382]/40 placeholder:text-stone-400 placeholder:italic placeholder:font-roxborough disabled:opacity-50"
+                  placeholder="e.g., Doe"
+                  value={surname}
+                  onChange={(e) => setSurname(e.target.value)}
+                />
+              </div>
+              
               {searchError && (
                 <p className="text-[#844C44] text-[11px] pt-2 font-roxborough italic animate-in fade-in">{searchError}</p>
               )}

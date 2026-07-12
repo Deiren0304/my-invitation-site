@@ -104,12 +104,27 @@ export default function Home() {
             {/* FIXED: Removed overflow-hidden and forced 1 straight line just like RSVP */}
             <div className="overflow-hidden mb-3 py-1 px-4 w-full flex justify-center">
   <h1
-    className="font-californian text-[#F5EBE1] tracking-wide leading-tight drop-shadow-sm opacity-0 animate-crisp-reveal text-center"
-    style={{ animationDelay: "350ms", fontSize: "clamp(2.5rem, 8.5vw, 5.5rem)" }}
+    className="font-californian text-[#F5EBE1] tracking-wide leading-tight drop-shadow-sm text-center opacity-0 animate-crisp-reveal"
+    style={{
+      animationDelay: "350ms",
+      fontSize: "clamp(2rem, 8vw, 5.5rem)",
+    }}
   >
     <span className="block">ARLAN DAVE</span>
-    <span className="block text-[#EADCCF]/70 font-light text-4xl md:text-6xl my-2">&amp;</span>
-    <span className="block">REI MARIE ANNE</span>
+
+    <span
+      className="block text-[#EADCCF]/70 font-light leading-none my-1"
+      style={{ fontSize: "0.55em" }}
+    >
+      &amp;
+    </span>
+
+    <span
+      className="block whitespace-nowrap"
+      style={{ fontSize: "0.95em" }}
+    >
+      REI MARIE ANNE
+    </span>
   </h1>
 </div>
             

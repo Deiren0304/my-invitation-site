@@ -179,15 +179,27 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                     </div>
                     
                     <div className="overflow-hidden pb-2 px-2">
-                      <h1 
+  <h1
     className="font-californian text-[#F5EBE1] tracking-wide leading-tight drop-shadow-sm text-center opacity-0 animate-reveal-text delay-[300ms] [animation-fill-mode:forwards]"
-    style={{ fontSize: "clamp(1.5rem, 9.5vw, 8.5rem)" }}
+    style={{ fontSize: "clamp(1.5rem, 9vw, 8.5rem)" }}
   >
-                        <span className="block md:inline">ARLAN DAVE</span>
-                        <span className="block md:inline text-3xl md:text-5xl text-[#EADCCF]/70 font-light mx-3 my-1 md:my-0">&</span>
-                        <span className="block md:inline">REI MARIE ANNE</span>
-                      </h1>
-                    </div>
+    <span className="block">ARLAN DAVE</span>
+
+    <span
+      className="block text-[#EADCCF]/70 font-light leading-none my-1"
+      style={{ fontSize: "0.55em" }}
+    >
+      &
+    </span>
+
+    <span
+      className="block whitespace-nowrap"
+      style={{ fontSize: "0.95em" }}
+    >
+      REI MARIE ANNE
+    </span>
+  </h1>
+</div>
                     
                     <div className="flex items-center justify-center space-x-3 opacity-0 animate-fade-in delay-[450ms] [animation-fill-mode:forwards]">
                       <div className="h-px w-12 md:w-20 bg-gradient-to-r from-transparent to-[#EADCCF]/40"></div>
