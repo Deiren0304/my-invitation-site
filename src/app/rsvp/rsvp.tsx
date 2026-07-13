@@ -200,7 +200,7 @@ export default function RsvpForm() {
                   required
                   disabled={isSearching}
                   className="w-full px-5 py-3.5 rounded-xl border border-stone-200/80 focus:ring-1 focus:ring-[#844C44] focus:border-[#844C44] outline-none text-stone-800 transition-all duration-300 text-sm font-arapey bg-white/90 shadow-2xs hover:border-[#B58382]/40 placeholder:text-stone-400 placeholder:italic placeholder:font-roxborough disabled:opacity-50"
-                  placeholder="e.g., John"
+                  placeholder="e.g., Juan"
                   value={firstName}
                   onChange={(e) => setFirstName(e.target.value)}
                 />
@@ -216,7 +216,7 @@ export default function RsvpForm() {
                   required
                   disabled={isSearching}
                   className="w-full px-5 py-3.5 rounded-xl border border-stone-200/80 focus:ring-1 focus:ring-[#844C44] focus:border-[#844C44] outline-none text-stone-800 transition-all duration-300 text-sm font-arapey bg-white/90 shadow-2xs hover:border-[#B58382]/40 placeholder:text-stone-400 placeholder:italic placeholder:font-roxborough disabled:opacity-50"
-                  placeholder="e.g., Doe"
+                  placeholder="e.g., Dela Cruz"
                   value={surname}
                   onChange={(e) => setSurname(e.target.value)}
                 />

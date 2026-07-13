@@ -216,13 +216,25 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                     </div>
                     
                     <div className="space-y-4 font-roxborough pt-2">
-                      <div className="overflow-hidden pb-1">
-                        <p className="text-sm md:text-3xl font-light tracking-widest text-[#F5EBE1] animate-reveal-text opacity-0 [animation-fill-mode:forwards]" style={{ animationDelay: '650ms' }}>
-                          ON MONDAY, 28TH DAY OF SEPTEMBER 2026
-                          AT 2:00 IN THE AFTERNOON
-                        </p>
-                      </div>
-                    </div>
+  <div className="overflow-hidden pb-1">
+    <p
+      className="text-[#F5EBE1] font-light tracking-widest text-center animate-reveal-text opacity-0 [animation-fill-mode:forwards]"
+      style={{
+        animationDelay: "650ms",
+        fontSize: "clamp(0.75rem, 2.8vw, 1.9rem)",
+        lineHeight: "1.7",
+      }}
+    >
+      <span className="block whitespace-nowrap">
+        ON MONDAY, 28TH DAY OF SEPTEMBER 2026
+      </span>
+
+      <span className="block mt-1">
+        AT 2:00 IN THE AFTERNOON
+      </span>
+    </p>
+  </div>
+</div>
                   </section>
 
                   {/* SECTION 2: Modern Aesthetic Live Countdown Dashboard */}
