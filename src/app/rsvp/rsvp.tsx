@@ -37,7 +37,6 @@ export default function RsvpForm() {
     const query = `${firstName.trim()} ${surname.trim()}`;
 
     try {
-      // .ilike() allows for case-insensitive searching (e.g., "john doe" matches "John Doe")
       const { data, error } = await supabase
         .from('guests')
         .select('*')
@@ -96,7 +95,7 @@ export default function RsvpForm() {
     });
   };
 
-  // Handle Step 2: Final Submission to Supabase
+  // Handle Step 2: Final Submission to Supabase AND Formspree
   const handleSubmitRSVP = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -106,6 +105,7 @@ export default function RsvpForm() {
     const finalGuestNames = isAttending ? formData.guestNames.slice(0, formData.attendingCount) : [];
 
     try {
+      // 1. Update Supabase Database
       const { error } = await supabase
         .from('guests')
         .update({
@@ -118,7 +118,27 @@ export default function RsvpForm() {
         .eq('id', guestId);
 
       if (error) throw error;
+
+      // 2. Send Email Notification via Formspree
+      // Replace "YOUR_FORMSPREE_ID" with the 8-character ID from your Formspree dashboard
+      const formspreeEndpoint = "https://formspree.io/f/xjgnvagv"; 
       
+      await fetch(formspreeEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          Invitation_Name: matchedName,
+          Attending: formData.attending === "yes" ? "Yes" : "No",
+          Guest_Count: actualCount,
+          Guest_Names: finalGuestNames.join(", ") || "None",
+          Notes: formData.notes || "None",
+        }),
+      });
+      
+      // Move to success step
       setStep(3);
     } catch (err) {
       console.error("Error submitting RSVP:", err);
@@ -130,11 +150,9 @@ export default function RsvpForm() {
 
   return (
     <div className="w-full max-w-xl mx-auto px-2">
-      
       {/* STEP 1: FIND INVITATION */}
       {step === 1 && (
         <div className="flex flex-col items-center w-full">
-          
           <div className="text-center space-y-4 mb-8 w-full pt-1">
             <div className="overflow-hidden pb-1">
               <p className="tracking-[0.4em] uppercase text-[9px] md:text-[10px] text-[#EADCCF] font-semibold opacity-0 animate-reveal-text delay-[150ms] [animation-fill-mode:forwards]">
@@ -142,29 +160,28 @@ export default function RsvpForm() {
               </p>
             </div>
             
-            {/* FIXED: Removed overflow-hidden and forced 1 straight line */}
             <div className="pb-2 px-2 w-full flex justify-center">
-  <h1
-    className="font-californian text-[#F5EBE1] tracking-wide leading-tight text-center drop-shadow-sm opacity-0 animate-reveal-text delay-[300ms] [animation-fill-mode:forwards]"
-    style={{ fontSize: "clamp(1.5rem, 9vw, 8.5rem)" }}
-  >
-    <span className="block">ARLAN DAVE</span>
+              <h1
+                className="font-californian text-[#F5EBE1] tracking-wide leading-tight text-center drop-shadow-sm opacity-0 animate-reveal-text delay-[300ms] [animation-fill-mode:forwards]"
+                style={{ fontSize: "clamp(1.5rem, 9vw, 8.5rem)" }}
+              >
+                <span className="block">ARLAN DAVE</span>
 
-    <span
-      className="block text-[#EADCCF]/70 font-light leading-none my-1"
-      style={{ fontSize: "0.55em" }}
-    >
-      &amp;
-    </span>
+                <span
+                  className="block text-[#EADCCF]/70 font-light leading-none my-1"
+                  style={{ fontSize: "0.55em" }}
+                >
+                  &amp;
+                </span>
 
-    <span
-      className="block whitespace-nowrap"
-      style={{ fontSize: "0.95em" }}
-    >
-      REI MARIE ANNE
-    </span>
-  </h1>
-</div>
+                <span
+                  className="block whitespace-nowrap"
+                  style={{ fontSize: "0.95em" }}
+                >
+                  REI MARIE ANNE
+                </span>
+              </h1>
+            </div>
 
             <div className="h-px w-12 bg-[#EADCCF]/30 mx-auto mt-2 opacity-0 animate-fade-in delay-[450ms] [animation-fill-mode:forwards]"></div>
           </div>
@@ -174,7 +191,6 @@ export default function RsvpForm() {
             onSubmit={handleSearch}
             className="w-full bg-white/70 backdrop-blur-md p-8 md:p-12 rounded-3xl shadow-[0_12px_45px_rgba(0,0,0,0.02)] border border-white/80 relative group overflow-hidden opacity-0 animate-fade-in delay-[600ms] [animation-fill-mode:forwards]"
           >
-            {/* Decorative Corner Accents */}
             <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-[#B58382]/20 rounded-tl-2xl pointer-events-none" />
             <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-[#B58382]/20 rounded-tr-2xl pointer-events-none" />
             <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-[#B58382]/20 rounded-bl-2xl pointer-events-none" />
@@ -246,13 +262,11 @@ export default function RsvpForm() {
           onSubmit={handleSubmitRSVP} 
           className="space-y-7 bg-white/70 backdrop-blur-md p-8 md:p-12 rounded-3xl shadow-[0_12px_45px_rgba(0,0,0,0.02)] border border-white/80 animate-in fade-in slide-in-from-bottom-6 duration-1000 ease-out relative group overflow-hidden"
         >
-          {/* Decorative Corner Accents */}
           <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-[#B58382]/20 rounded-tl-2xl pointer-events-none" />
           <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-[#B58382]/20 rounded-tr-2xl pointer-events-none" />
           <div className="absolute bottom-0 left-0 w-8 h-8 border-b border-l border-[#B58382]/20 rounded-bl-2xl pointer-events-none" />
           <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-[#B58382]/20 rounded-br-2xl pointer-events-none" />
 
-          {/* Form Header */}
           <div className="text-center space-y-2 border-b border-[#B58382]/20 pb-6 pt-2">
             <div className="overflow-hidden pb-1">
               <p className="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#B58382] font-arapey opacity-0 animate-reveal-text delay-[150ms] [animation-fill-mode:forwards]">Welcome,</p>
@@ -267,7 +281,6 @@ export default function RsvpForm() {
             </div>
           </div>
 
-          {/* Attendance Toggle */}
           <div className="space-y-3 opacity-0 animate-fade-in delay-[600ms] [animation-fill-mode:forwards]">
             <label className="block text-[10px] md:text-xs uppercase tracking-[0.25em] font-semibold text-[#844C44] font-arapey text-center">
               Will you attend?
@@ -303,7 +316,6 @@ export default function RsvpForm() {
             </div>
           </div>
 
-          {/* Conditional Fields if Attending */}
           {formData.attending === "yes" && (
             <div className="space-y-6 pt-4 animate-in fade-in slide-in-from-top-4 duration-500 ease-out border-t border-[#B58382]/10 opacity-0 animate-fade-in delay-[750ms] [animation-fill-mode:forwards]">
               
@@ -330,7 +342,6 @@ export default function RsvpForm() {
                 </div>
               )}
 
-              {/* Dynamic Name Inputs */}
               <div className="space-y-4">
                 <label className="block text-[10px] md:text-xs uppercase tracking-[0.25em] font-semibold text-[#844C44] font-arapey">
                   Guest Names
@@ -349,7 +360,6 @@ export default function RsvpForm() {
                 ))}
               </div>
 
-              {/* Notes */}
               <div className="space-y-2">
                 <label htmlFor="notes" className="block text-[10px] md:text-xs uppercase tracking-[0.25em] font-semibold text-[#844C44] font-arapey">
                   Notes & Dietary Restrictions
