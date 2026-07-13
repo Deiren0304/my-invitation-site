@@ -107,7 +107,7 @@ export default function Home() {
     className="font-californian text-[#F5EBE1] tracking-wide leading-tight drop-shadow-sm text-center opacity-0 animate-crisp-reveal"
     style={{
       animationDelay: "350ms",
-      fontSize: "clamp(2rem, 8vw, 5.5rem)",
+      fontSize: "clamp(1.5rem, 9vw, 8.5rem)",
     }}
   >
     <span className="block">ARLAN DAVE</span>

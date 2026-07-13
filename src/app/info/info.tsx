@@ -603,8 +603,15 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
 
       {/* Required CSS rules for your specific custom fonts and animation keyframes */}
       <style jsx global>{`
+        /* FIX: Set body background to match so mobile scroll-bounce doesn't show white */
+        body { 
+          background-color: #825656 !important; 
+          overscroll-behavior-y: none; /* Stops the rubber-band bounce effect on mobile */
+        }
+
         /* Load your custom fonts */
         .font-roxborough { font-family: 'RoxboroughCF', serif; }
+        .font-californian { font-family: 'Californian FB', serif; }
         .font-arapey { font-family: 'Arapey', serif; }
 
         @keyframes revealText { 0% { transform: translateY(105%); opacity: 0; } 100% { transform: translateY(0); opacity: 1; } }
