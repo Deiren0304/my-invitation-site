@@ -198,12 +198,6 @@ export default function ImageGallery({ onBack }: ImageGalleryProps) {
 
       {/* Inline styles for custom animations */}
       <style jsx global>{`
-        /* FIX: Set body background to match so mobile scroll-bounce doesn't show white */
-        body { 
-          background-color: #825656 !important; 
-          overscroll-behavior-y: none; 
-        }
-
         /* Load your custom fonts */
         .font-roxborough { font-family: 'RoxboroughCF', serif; }
         .font-arapey { font-family: 'Arapey', serif; }
