@@ -47,7 +47,7 @@ export default function Home() {
   return (
     <>
       {/* Global Audio Element (Hidden) - Loops continuously */}
-      <audio ref={audioRef} src="/music.mp3" loop preload="auto" />
+      <audio ref={audioRef} src="/musics.mp3" loop preload="auto" />
 
       {/* Conditionally render the envelope OR the inner invitation */}
       {isOpened ? (

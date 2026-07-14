@@ -1,15 +1,17 @@
 "use client";
 
 import { useState } from "react";
-import { supabase } from "@/lib/supabase"; // Update this path based on where you saved supabase.ts
+import { supabase } from "@/lib/supabase";
 
 export default function RsvpForm() {
   // Navigation State
   const [step, setStep] = useState<1 | 2 | 3>(1); 
   
-  // Step 1 State: Search
-  const [firstName, setFirstName] = useState("");
-  const [surname, setSurname] = useState("");
+  // Step 1 State: Search & Autocomplete
+  const [fullName, setFullName] = useState("");
+  const [suggestions, setSuggestions] = useState<string[]>([]);
+  const [showSuggestions, setShowSuggestions] = useState(false);
+  
   const [searchError, setSearchError] = useState("");
   const [isSearching, setIsSearching] = useState(false);
   
@@ -27,16 +29,52 @@ export default function RsvpForm() {
     notes: "",
   });
 
+  // Handle Input Change for Autocomplete
+  const handleNameChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setFullName(value);
+    setSearchError("");
+
+    // Changed from >= 2 to >= 1 to trigger immediately
+    if (value.trim().length >= 1) {
+      try {
+        // Query for names that contain the typed string
+        const { data, error } = await supabase
+          .from('guests')
+          .select('full_name')
+          .ilike('full_name', `%${value}%`)
+          .limit(5);
+
+        if (data && !error) {
+          setSuggestions(data.map(guest => guest.full_name));
+          setShowSuggestions(true);
+        }
+      } catch (err) {
+        console.error("Error fetching suggestions:", err);
+      }
+    } else {
+      setSuggestions([]);
+      setShowSuggestions(false);
+    }
+  };
+
+  // Handle clicking a suggestion from the dropdown
+  const handleSelectSuggestion = (name: string) => {
+    setFullName(name);
+    setSuggestions([]);
+    setShowSuggestions(false);
+  };
+
   // Handle Step 1: Find Invitation via Supabase
   const handleSearch = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSearching(true);
     setSearchError("");
     
-    // Combine first name and surname for the database search
-    const query = `${firstName.trim()} ${surname.trim()}`;
+    const query = fullName.trim();
 
     try {
+      // Find the exact match (case-insensitive) based on the input
       const { data, error } = await supabase
         .from('guests')
         .select('*')
@@ -44,7 +82,7 @@ export default function RsvpForm() {
         .single();
 
       if (error || !data) {
-        setSearchError("We couldn't find your name. Please try using your first name and surname as written on your physical envelope.");
+        setSearchError("We couldn't find your name. Please ensure it matches exactly what was written on your physical envelope.");
         setIsSearching(false);
         return;
       }
@@ -120,7 +158,6 @@ export default function RsvpForm() {
       if (error) throw error;
 
       // 2. Send Email Notification via Formspree
-      // Replace "YOUR_FORMSPREE_ID" with the 8-character ID from your Formspree dashboard
       const formspreeEndpoint = "https://formspree.io/f/xjgnvagv"; 
       
       await fetch(formspreeEndpoint, {
@@ -201,41 +238,50 @@ export default function RsvpForm() {
                 <h2 className="font-roxborough text-xl md:text-2xl text-[#3A2522] tracking-wide opacity-0 animate-reveal-text delay-[750ms] [animation-fill-mode:forwards]">Find Your Invitation</h2>
               </div>
               <div className="overflow-hidden pb-1">
-                <p className="text-stone-500 text-xs font-arapey max-w-xs mx-auto leading-relaxed opacity-0 animate-reveal-text delay-[900ms] [animation-fill-mode:forwards]">Please enter your first and last name to find your invitation.</p>
+                <p className="text-stone-500 text-xs font-arapey max-w-xs mx-auto leading-relaxed opacity-0 animate-reveal-text delay-[900ms] [animation-fill-mode:forwards]">Please enter your full name below to locate your reservation.</p>
               </div>
             </div>
 
             <div className="space-y-4 mb-6 opacity-0 animate-fade-in delay-[1050ms] [animation-fill-mode:forwards]">
-              <div className="space-y-2">
-                <label htmlFor="firstName" className="block text-[10px] md:text-xs uppercase tracking-[0.25em] font-semibold text-[#844C44] font-arapey">
-                  First Name
+              
+              {/* Autocomplete Input Container */}
+              <div className="space-y-2 relative">
+                <label htmlFor="fullName" className="block text-[10px] md:text-xs uppercase tracking-[0.25em] font-semibold text-[#844C44] font-arapey text-left">
+                  Full Name
                 </label>
                 <input
                   type="text"
-                  id="firstName"
+                  id="fullName"
                   required
                   disabled={isSearching}
                   className="w-full px-5 py-3.5 rounded-xl border border-stone-200/80 focus:ring-1 focus:ring-[#844C44] focus:border-[#844C44] outline-none text-stone-800 transition-all duration-300 text-sm font-arapey bg-white/90 shadow-2xs hover:border-[#B58382]/40 placeholder:text-stone-400 placeholder:italic placeholder:font-roxborough disabled:opacity-50"
-                  placeholder="e.g., Juan"
-                  value={firstName}
-                  onChange={(e) => setFirstName(e.target.value)}
+                  placeholder="e.g., Juan Dela Cruz"
+                  value={fullName}
+                  onChange={handleNameChange}
+                  onFocus={() => {
+                    if (suggestions.length > 0) setShowSuggestions(true);
+                  }}
+                  onBlur={() => {
+                    // Delay hiding so clicking a suggestion registers before it unmounts
+                    setTimeout(() => setShowSuggestions(false), 200);
+                  }}
                 />
-              </div>
 
-              <div className="space-y-2">
-                <label htmlFor="surname" className="block text-[10px] md:text-xs uppercase tracking-[0.25em] font-semibold text-[#844C44] font-arapey">
-                  Surname
-                </label>
-                <input
-                  type="text"
-                  id="surname"
-                  required
-                  disabled={isSearching}
-                  className="w-full px-5 py-3.5 rounded-xl border border-stone-200/80 focus:ring-1 focus:ring-[#844C44] focus:border-[#844C44] outline-none text-stone-800 transition-all duration-300 text-sm font-arapey bg-white/90 shadow-2xs hover:border-[#B58382]/40 placeholder:text-stone-400 placeholder:italic placeholder:font-roxborough disabled:opacity-50"
-                  placeholder="e.g., Dela Cruz"
-                  value={surname}
-                  onChange={(e) => setSurname(e.target.value)}
-                />
+                {/* Suggestions Dropdown (Absolute positioning removed, mt-2 added to push elements down) */}
+                {showSuggestions && suggestions.length > 0 && (
+                  <ul className="w-full bg-white border border-stone-200/80 rounded-xl shadow-sm mt-2 max-h-48 overflow-y-auto">
+                    {suggestions.map((name, idx) => (
+                      <li 
+                        key={idx}
+                        // Use onMouseDown instead of onClick to prevent the input's onBlur from firing first
+                        onMouseDown={() => handleSelectSuggestion(name)}
+                        className="px-5 py-3 hover:bg-[#F5EBE1]/50 cursor-pointer text-sm font-arapey text-stone-700 border-b border-stone-100 last:border-none transition-colors"
+                      >
+                        {name}
+                      </li>
+                    ))}
+                  </ul>
+                )}
               </div>
               
               {searchError && (
