@@ -526,15 +526,59 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                     </div>
                   </section>
 
-                  <section className="w-full text-center py-6 mt-16 animate-fade-in delay-[3100ms] [animation-fill-mode:forwards] opacity-0">
-                    <p className="font-roxborough text-sm italic text-[#EADCCF] font-medium inline-block px-4 py-1 rounded-full mb-6">We kindly request the favor of your response</p>
-                    <br />
-                    <button 
-                      onClick={() => handleToggleRsvp(true)}
-                      className="inline-block bg-[#F5EBE1] text-[#844C44] font-arapey font-bold uppercase tracking-[0.3em] text-[11px] py-4 px-12 rounded-full shadow-lg hover:shadow-2xl hover:bg-white active:scale-95 transition-all duration-300 ease-out hover:-translate-y-1 active:translate-y-0.5 cursor-pointer"
-                    >
-                      Submit your RSVP Here
-                    </button>
+                  <section className="w-full text-center py-6 mt-16">
+                    
+                    {/* ANIMATED: Kindly Reply Block */}
+                    <div className="flex flex-col items-center text-center space-y-5 mb-10 w-full max-w-lg mx-auto px-2">
+                      <div className="overflow-hidden pb-4">
+                        <h2 
+                          className="font-roxborough text-[3.5rem] md:text-7xl text-[#F5EBE1] mb-2 drop-shadow-sm animate-reveal-text opacity-0 [animation-fill-mode:forwards]" 
+                          style={{ fontStyle: 'italic', lineHeight: '1.1', animationDelay: '3100ms' }}
+                        >
+                          Kindly Reply
+                        </h2>
+                      </div>
+
+                      <div className="font-arapey text-[#EADCCF] text-[12px] md:text-[14px] leading-[2.2] tracking-[0.15em] uppercase space-y-4">
+                        <div className="overflow-hidden pb-1">
+                          <p className="animate-reveal-text opacity-0 [animation-fill-mode:forwards]" style={{ animationDelay: '3200ms' }}>
+                            We have reserved <span className="font-bold text-[#F5EBE1] text-[14px] md:text-[16px]">150 seats</span> for the celebration of our wedding, and we hope to share this beautiful day with you.
+                          </p>
+                        </div>
+                        
+                        <div className="overflow-hidden pb-1">
+                          <p className="animate-reveal-text opacity-0 [animation-fill-mode:forwards]" style={{ animationDelay: '3300ms' }}>
+                            Your love and support have been part of our journey.<br className="hidden md:block" /> Please let us know if you'll be there as we say "I do."
+                          </p>
+                        </div>
+                        
+                        <div className="overflow-hidden pb-1">
+                          <p className="animate-reveal-text opacity-0 [animation-fill-mode:forwards]" style={{ animationDelay: '3400ms' }}>
+                            Please confirm your attendance by
+                          </p>
+                        </div>
+                        
+                        <div className="overflow-hidden pt-2 pb-2">
+                          <p className="font-bold text-[#F5EBE1] text-[18px] md:text-[22px] tracking-[0.2em] animate-reveal-text opacity-0 [animation-fill-mode:forwards]" style={{ animationDelay: '3500ms' }}>
+                            AUGUST 30, 2026
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* ANIMATED: Button & Footer text */}
+                    <div className="animate-fade-in opacity-0 [animation-fill-mode:forwards]" style={{ animationDelay: '3700ms' }}>
+                      <p className="font-roxborough text-sm italic text-[#EADCCF] font-medium inline-block px-4 py-1 rounded-full mb-6">
+                        We kindly request the favor of your response
+                      </p>
+                      <br />
+                      <button 
+                        onClick={() => handleToggleRsvp(true)}
+                        className="inline-block bg-[#F5EBE1] text-[#844C44] font-arapey font-bold uppercase tracking-[0.3em] text-[11px] py-4 px-12 rounded-full shadow-lg hover:shadow-2xl hover:bg-white active:scale-95 transition-all duration-300 ease-out hover:-translate-y-1 active:translate-y-0.5 cursor-pointer"
+                      >
+                        Submit your RSVP Here
+                      </button>
+                    </div>
                   </section>
                 </>
               ) : (
