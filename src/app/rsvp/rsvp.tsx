@@ -186,7 +186,7 @@ export default function RsvpForm() {
   };
 
   return (
-    <div className="w-full max-w-xl mx-auto px-2">
+    <div className="w-full max-w-xl mx-auto px-2 flex flex-col items-center">
       {/* STEP 1: FIND INVITATION */}
       {step === 1 && (
         <div className="flex flex-col items-center w-full">
@@ -306,7 +306,7 @@ export default function RsvpForm() {
       {step === 2 && (
         <form 
           onSubmit={handleSubmitRSVP} 
-          className="space-y-7 bg-white/70 backdrop-blur-md p-8 md:p-12 rounded-3xl shadow-[0_12px_45px_rgba(0,0,0,0.02)] border border-white/80 animate-in fade-in slide-in-from-bottom-6 duration-1000 ease-out relative group overflow-hidden"
+          className="w-full space-y-7 bg-white/70 backdrop-blur-md p-8 md:p-12 rounded-3xl shadow-[0_12px_45px_rgba(0,0,0,0.02)] border border-white/80 animate-in fade-in slide-in-from-bottom-6 duration-1000 ease-out relative group overflow-hidden"
         >
           <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-[#B58382]/20 rounded-tl-2xl pointer-events-none" />
           <div className="absolute top-0 right-0 w-8 h-8 border-t border-r border-[#B58382]/20 rounded-tr-2xl pointer-events-none" />
@@ -445,7 +445,7 @@ export default function RsvpForm() {
 
       {/* STEP 3: SUCCESS STATE */}
       {step === 3 && (
-        <div className="bg-white/70 backdrop-blur-md p-10 md:p-14 rounded-3xl text-center border border-white/80 shadow-[0_12px_40px_rgba(0,0,0,0.03)] flex flex-col items-center space-y-5">
+        <div className="w-full bg-white/70 backdrop-blur-md p-10 md:p-14 rounded-3xl text-center border border-white/80 shadow-[0_12px_40px_rgba(0,0,0,0.03)] flex flex-col items-center space-y-5">
           
           <div className="w-14 h-14 bg-[#F5EBE1] border border-[#B58382]/30 rounded-full flex items-center justify-center shadow-sm opacity-0 animate-fade-in delay-[150ms] [animation-fill-mode:forwards]">
             <svg className="w-6 h-6 text-[#844C44]" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.5">
@@ -472,6 +472,19 @@ export default function RsvpForm() {
         </div>
       )}
       
+      {/* RSVP STRICT RULES NOTE (Always visible at the bottom) */}
+      <div className="mt-10 mb-2 w-full text-center opacity-0 animate-fade-in delay-[700ms] [animation-fill-mode:forwards]">
+        <p className="font-arapey text-[#EADCCF]/90 text-[14px] md:text-[15px] leading-relaxed">
+          <span className="font-bold text-white">Note:</span> Only guests who have<br className="md:hidden" /> confirmed their RSVP will attend.
+        </p>
+        <p className="font-roxborough font-bold text-white text-[13px] md:text-[14px] uppercase tracking-wider my-3 drop-shadow-sm">
+          Strictly No Plus One.
+        </p>
+        <p className="font-arapey text-[#EADCCF]/90 text-[14px] md:text-[15px] leading-relaxed max-w-sm mx-auto">
+          Please refer to the number of guests allotted for you. Thank you for understanding.
+        </p>
+      </div>
+
     </div>
   );
 }
