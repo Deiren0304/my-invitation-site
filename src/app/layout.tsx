@@ -27,10 +27,12 @@ export const metadata: Metadata = {
     siteName: "Canales Wedding Invitation",
     images: [
       {
-        url: "/ogi-image.png",
+        // Use the FULL absolute URL here to ensure Messenger finds it
+        url: "https://canales-yumolwedding.vercel.app/ogi-image.png",
         width: 1200,
         height: 630,
         alt: "Arlan Dave & Rei Marie Anne - Wedding Invitation",
+        type: "image/png", // Explicitly state the image type
       },
     ],
     locale: "en_US",
@@ -41,7 +43,8 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Arlan Dave & Rei Marie Anne - Wedding Invitation",
     description: "Join us in celebrating our special day.",
-    images: ["/ogi-image.png"],
+    // Use the full URL for Twitter as well just in case
+    images: ["https://canales-yumolwedding.vercel.app/ogi-image.png"],
   },
 };
 

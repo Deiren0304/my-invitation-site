@@ -29,7 +29,7 @@ export default function Home() {
     }, 800);
   };
 
-  // Toggle music play/pause
+  // Toggle music play/pause for the floating button
   const toggleMusic = () => {
     if (audioRef.current) {
       if (isPlaying) {
@@ -42,7 +42,19 @@ export default function Home() {
     }
   };
 
-  
+  // Functions to pass down to the Video Player
+  const pauseMusic = () => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+    }
+  };
+
+  const resumeMusic = () => {
+    if (audioRef.current) {
+      audioRef.current.play().then(() => setIsPlaying(true)).catch(e => console.log(e));
+    }
+  };
 
   return (
     <>
@@ -56,6 +68,8 @@ export default function Home() {
             setIsOpened(false);
             setIsOpening(false);
           }} 
+          onVideoPlay={pauseMusic} 
+          onVideoPause={resumeMusic} 
         />
       ) : (
         <main className="min-h-screen flex flex-col items-center justify-center p-4 text-[#3A2522] overflow-x-hidden selection:bg-[#B58382]/20 relative w-full h-full">
@@ -85,7 +99,6 @@ export default function Home() {
             .animate-pristine-pulse { animation: pristinePulse 2.5s ease-in-out infinite; }
           `}</style>
 
-          {/* Changed max-w-sm to max-w-3xl to allow the long title to stretch */}
           <div 
             className={`w-full max-w-3xl text-center flex flex-col items-center select-none transition-all duration-1000 cubic-bezier(0.16, 1, 0.3, 1) ${
               isOpening ? "transform scale-95 opacity-0 translate-y-8" : "opacity-100 scale-100 translate-y-0"
@@ -101,32 +114,31 @@ export default function Home() {
               </p>
             </div>
             
-            {/* FIXED: Removed overflow-hidden and forced 1 straight line just like RSVP */}
             <div className="overflow-hidden mb-3 py-1 px-4 w-full flex justify-center">
-  <h1
-    className="font-californian text-[#F5EBE1] tracking-wide leading-tight drop-shadow-sm text-center opacity-0 animate-crisp-reveal"
-    style={{
-      animationDelay: "350ms",
-      fontSize: "clamp(1.5rem, 9vw, 8.5rem)",
-    }}
-  >
-    <span className="block">ARLAN DAVE</span>
+              <h1
+                className="font-californian text-[#F5EBE1] tracking-wide leading-tight drop-shadow-sm text-center opacity-0 animate-crisp-reveal"
+                style={{
+                  animationDelay: "350ms",
+                  fontSize: "clamp(1.5rem, 9vw, 8.5rem)",
+                }}
+              >
+                <span className="block">ARLAN DAVE</span>
 
-    <span
-      className="block text-[#EADCCF]/70 font-light leading-none my-1"
-      style={{ fontSize: "0.55em" }}
-    >
-      &amp;
-    </span>
+                <span
+                  className="block text-[#EADCCF]/70 font-light leading-none my-1"
+                  style={{ fontSize: "0.55em" }}
+                >
+                  &amp;
+                </span>
 
-    <span
-      className="block whitespace-nowrap"
-      style={{ fontSize: "0.95em" }}
-    >
-      REI MARIE ANNE
-    </span>
-  </h1>
-</div>
+                <span
+                  className="block whitespace-nowrap"
+                  style={{ fontSize: "0.95em" }}
+                >
+                  REI MARIE ANNE
+                </span>
+              </h1>
+            </div>
             
             {/* Date Stamp - Sharp Mask Slide Reveal */}
             <div className="overflow-hidden mb-10 py-1 px-2">
@@ -138,7 +150,6 @@ export default function Home() {
               </p>
             </div>
 
-            {/* Added max-w-sm specifically to the envelope so it doesn't get huge now that parent is max-w-3xl */}
             <div 
               className="relative w-full max-w-sm aspect-[4/3] bg-[#EADCCF]/80 backdrop-blur-md rounded-xl shadow-[0_25px_50px_-12px_rgba(58,37,34,0.25)] border border-white/40 p-2 flex items-center justify-center overflow-visible group opacity-0 animate-clean-fade"
               style={{ animationDelay: "850ms" }}

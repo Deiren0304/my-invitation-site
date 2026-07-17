@@ -1,14 +1,20 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import RsvpForm from "../rsvp/rsvp";
 import ImageGallery from "../images/page"; // <-- Make sure this path points to your gallery file!
 
 interface InvitationInfoProps {
   onClose: () => void;
+  onVideoPlay: () => void;
+  onVideoPause: () => void;
 }
 
-export default function InvitationInfo({ onClose }: InvitationInfoProps) {
+export default function InvitationInfo({ onClose, onVideoPlay, onVideoPause }: InvitationInfoProps) {
+  // Refs for Video and Background Music
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const bgMusicRef = useRef<HTMLAudioElement>(null);
+
   // Exit State for Close Animation
   const [isExiting, setIsExiting] = useState(false);
   const [activeLightbox, setActiveLightbox] = useState<{ src: string; alt: string } | null>(null);
@@ -76,6 +82,23 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
     };
   }, [activeLightbox, isTransitioning]);
 
+  // Video Scroll Tracker: Pause video when user scrolls it out of view
+  useEffect(() => {
+    const handleScroll = () => {
+      if (videoRef.current && !videoRef.current.paused) {
+        const rect = videoRef.current.getBoundingClientRect();
+        // Pause if the video is mostly out of the viewport
+        const isVisible = rect.top < window.innerHeight - 100 && rect.bottom > 100;
+        if (!isVisible) {
+          videoRef.current.pause();
+        }
+      }
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   // Intercept Close Click to run Exit Animation first
   const handleClose = () => {
     setIsExiting(true);
@@ -90,6 +113,19 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
 
   const closeLightbox = () => {
     setActiveLightbox(null);
+  };
+
+  // Video Play/Pause Handlers for Background Music Interaction
+  const handleVideoPlay = () => {
+    if (bgMusicRef.current) {
+      bgMusicRef.current.pause();
+    }
+  };
+
+  const handleVideoPause = () => {
+    if (bgMusicRef.current) {
+      bgMusicRef.current.play().catch(err => console.log("Audio play requires user interaction first", err));
+    }
   };
 
   // Handle Elegant Loader Transition between Views
@@ -126,6 +162,9 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
 
   return (
     <>
+      {/* Background Music Player */}
+      <audio ref={bgMusicRef} src="/bgmusic.mp3" loop preload="auto" />
+
       {/* Full-Screen Transition Loader */}
       {isTransitioning && (
         <div className="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-[#F5EBE1] animate-in fade-in duration-300">
@@ -309,8 +348,46 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                     </div>
                   </section>
 
+                  {/* SECTION 3.5: Save The Date Video Player */}
+                  <section className="w-full flex flex-col items-center my-6 w-full max-w-3xl px-2">
+                    <div className="overflow-hidden pb-4 mb-2">
+                      <h2 
+                        className="font-roxborough text-3xl md:text-4xl text-[#F5EBE1] tracking-[0.15em] uppercase animate-reveal-text opacity-0 [animation-fill-mode:forwards]"
+                        style={{ animationDelay: "1350ms" }}
+                      >
+                        Save The Date
+                      </h2>
+                    </div>
+                    <div 
+                      className="w-full bg-white/20 p-2 md:p-3 rounded-2xl backdrop-blur-md border border-white/30 shadow-[0_12px_40px_rgba(0,0,0,0.15)] animate-fade-in opacity-0 [animation-fill-mode:forwards]"
+                      style={{ animationDelay: "1450ms" }}
+                    >
+                      <video 
+                        ref={videoRef}
+                        src="/std.mp4" 
+                        controls 
+                        playsInline
+                        onPlay={onVideoPlay}
+                        onPause={onVideoPause}
+                        onEnded={onVideoPause}
+                        className="w-full rounded-xl object-cover shadow-inner bg-black/10"
+                      />
+                    </div>
+                  </section>
+
                   {/* SECTION 4: Event Essential Info Matrix */}
-                  <section className="w-full space-y-10">
+                  <section className="w-full space-y-10 mt-10">
+                    
+                    {/* NEW WEDDING DETAILS TITLE */}
+                    <div className="w-full text-center pb-2">
+                      <h2 
+                        className="font-roxborough text-3xl md:text-4xl text-[#F5EBE1] tracking-[0.15em] uppercase animate-reveal-text opacity-0 [animation-fill-mode:forwards]"
+                        style={{ animationDelay: "1550ms" }}
+                      >
+                        Wedding Details
+                      </h2>
+                    </div>
+
                     <div className="bg-white/80 backdrop-blur-md rounded-3xl overflow-hidden border border-white/30 shadow-[0_12px_40px_rgba(0,0,0,0.1)] hover:shadow-[0_15px_50px_rgba(0,0,0,0.15)] transition-all duration-500 grid grid-cols-1 md:grid-cols-12 group">
                       <button 
                         onClick={() => openLightbox("/location.png", "Iglesia ng Dios kay Cristo Jesus")}
@@ -554,7 +631,7 @@ export default function InvitationInfo({ onClose }: InvitationInfoProps) {
                         
                         <div className="overflow-hidden pb-1">
                           <p className="animate-reveal-text opacity-0 [animation-fill-mode:forwards]" style={{ animationDelay: '3400ms' }}>
-                            Please confirm your attendance by
+                            Please confirm your attendance on or before
                           </p>
                         </div>
                         
