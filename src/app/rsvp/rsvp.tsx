@@ -36,7 +36,7 @@ export default function RsvpForm() {
     setSearchError("");
 
     // Changed from >= 2 to >= 1 to trigger immediately
-    if (value.trim().length >= 1) {
+    if (value.trim().length >= 3) {
       try {
         // Query for names that contain the typed string
         const { data, error } = await supabase
