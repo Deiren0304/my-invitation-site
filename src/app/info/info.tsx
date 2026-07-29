@@ -197,7 +197,6 @@ export default function InvitationInfo({ onClose, onVideoPlay, onVideoPause }: I
             </button>
 
             {/* Main Content Container */}
-            {/* The space-y-20 applies top margin to top-level children only */}
             <div className="max-w-3xl w-full flex flex-col items-center space-y-20 mt-8 mb-24 px-2 animate-in fade-in slide-in-from-bottom-12 duration-1000 ease-out">
               
               {!showRsvp ? (
@@ -295,7 +294,7 @@ export default function InvitationInfo({ onClose, onVideoPlay, onVideoPause }: I
                     </div>
                   </section>
 
-                  {/* GROUP 1: GALLERY & VIDEO (Bypasses space-y-20 parent rule) */}
+                  {/* GROUP 1: GALLERY & VIDEO */}
                   <div className="w-full flex flex-col items-center gap-12 md:gap-8">
                     {/* SECTION 3: Fine Art Engagement Image Gallery & Link */}
                     <section className="w-full flex flex-col items-center">
@@ -371,21 +370,22 @@ export default function InvitationInfo({ onClose, onVideoPlay, onVideoPause }: I
                     </section>
                   </div>
 
-                  {/* GROUP 2: WEDDING DETAILS & KINDLY REPLY (Bypasses space-y-20 parent rule) */}
-<div className="w-full flex flex-col items-center gap-14 md:gap-20 -mt-8">
+                  {/* GROUP 2: WEDDING DETAILS & KINDLY REPLY */}
+                  <div className="w-full flex flex-col items-center gap-14 md:gap-20 -mt-8">
                     
                     {/* SECTION 4: Event Essential Info Matrix */}
                     <section className="w-full space-y-8">
                       {/* NEW WEDDING DETAILS TITLE */}
-                    <div className="w-full text-center pb-2">
-                      <h2 
-                        className="font-roxborough text-[7vw] min-[400px]:text-3xl md:text-4xl text-[#F5EBE1] tracking-[0.05em] sm:tracking-[0.15em] uppercase whitespace-nowrap animate-reveal-text opacity-0 [animation-fill-mode:forwards]"
-                        style={{ animationDelay: "1550ms" }}
-                      >
-                        Wedding Details
-                      </h2>
-                    </div>
+                      <div className="w-full text-center pb-2">
+                        <h2 
+                          className="font-roxborough text-[7vw] min-[400px]:text-3xl md:text-4xl text-[#F5EBE1] tracking-[0.05em] sm:tracking-[0.15em] uppercase whitespace-nowrap animate-reveal-text opacity-0 [animation-fill-mode:forwards]"
+                          style={{ animationDelay: "1550ms" }}
+                        >
+                          Wedding Details
+                        </h2>
+                      </div>
 
+                      {/* LOCATION */}
                       <div className="bg-white/80 backdrop-blur-md rounded-3xl overflow-hidden border border-white/30 shadow-[0_12px_40px_rgba(0,0,0,0.1)] hover:shadow-[0_15px_50px_rgba(0,0,0,0.15)] transition-all duration-500 grid grid-cols-1 md:grid-cols-12 group">
                         <button 
                           onClick={() => openLightbox("/location.png", "Iglesia ng Dios kay Cristo Jesus")}
@@ -424,6 +424,7 @@ export default function InvitationInfo({ onClose, onVideoPlay, onVideoPause }: I
                         </div>
                       </div>
 
+                      {/* RECEPTION */}
                       <div className="bg-white/80 backdrop-blur-md rounded-3xl overflow-hidden border border-white/30 shadow-[0_12px_40px_rgba(0,0,0,0.1)] hover:shadow-[0_15px_50px_rgba(0,0,0,0.15)] transition-all duration-500 grid grid-cols-1 md:grid-cols-12 group">
                         <div className="md:col-span-7 p-8 md:p-10 flex flex-col justify-center text-center md:text-left space-y-3 order-2 md:order-1">
                           <div className="overflow-hidden pb-1">
@@ -460,40 +461,67 @@ export default function InvitationInfo({ onClose, onVideoPlay, onVideoPause }: I
                         </button>
                       </div>
 
+                      {/* ATTIRE GUIDE (Updated Base on image_648836.png) */}
                       <div className="bg-white/80 backdrop-blur-md rounded-3xl overflow-hidden border border-white/30 shadow-[0_12px_40px_rgba(0,0,0,0.1)] hover:shadow-[0_15px_50px_rgba(0,0,0,0.15)] transition-all duration-500 grid grid-cols-1 md:grid-cols-12 group">
                         <button 
-                          onClick={() => openLightbox("/attiress.png", "Dress Code Style Inspiration")}
+                          onClick={() => openLightbox("/attired.png", "Dress Code Style Inspiration")}
                           className="md:col-span-5 relative aspect-video md:aspect-auto bg-[#EADCCF]/50 flex items-center justify-center overflow-hidden border-b md:border-b-0 md:border-r border-[#B58382]/20 cursor-pointer text-left w-full"
                         >
                           <img 
-                            src="/attiress.png" 
+                            src="/attired.png" 
                             alt="Dress Code Style Inspiration"
                             className="absolute inset-0 w-full h-full object-cover opacity-0 transition-opacity duration-700 group-hover:scale-105 transition-transform"
                             onLoad={(e) => e.currentTarget.classList.remove('opacity-0')}
                           />
                         </button>
-                        <div className="md:col-span-7 p-8 md:p-10 flex flex-col justify-center text-center md:text-left space-y-3">
+                        
+                        <div className="md:col-span-7 p-8 md:p-10 flex flex-col justify-center text-center md:text-left space-y-2">
                           <div className="overflow-hidden pb-1">
                             <div className="text-[10px] uppercase tracking-[0.25em] text-[#B58382] font-bold animate-reveal-text delay-[1950ms] [animation-fill-mode:forwards] opacity-0">Attire</div>
                           </div>
+                          
                           <div className="overflow-hidden pb-2 mb-1 px-1">
-                            <h2 className="font-roxborough text-2xl text-[#3A2522] tracking-wide animate-reveal-text delay-[2050ms] [animation-fill-mode:forwards] opacity-0">Dress Code Palette</h2>
+                            <h2 className="font-californian text-2xl text-[#3A2522] tracking-[0.12em] uppercase animate-reveal-text delay-[2050ms] [animation-fill-mode:forwards] opacity-0">
+                              Attire Guide
+                            </h2>
                           </div>
+                          
                           <div className="overflow-hidden pt-1 pb-1">
-                            <p className="font-medium text-stone-800 text-sm animate-reveal-text delay-[2150ms] [animation-fill-mode:forwards] opacity-0">Semi-Formal</p>
+                            <p className="font-arapey text-stone-800 text-[13px] md:text-sm animate-reveal-text delay-[2150ms] [animation-fill-mode:forwards] opacity-0 uppercase">
+                              Strictly Formal
+                            </p>
+                          </div>
+
+                          <div className="overflow-hidden pt-2">
+                            <p className="font-arapey text-stone-800 text-[13px] md:text-sm font-semibold animate-reveal-text delay-[2200ms] [animation-fill-mode:forwards] opacity-0 uppercase tracking-widest">
+                              Principal Sponsors
+                            </p>
                           </div>
                           <div className="overflow-hidden pb-1 px-1">
-                            <p className="text-stone-600 text-xs leading-relaxed font-arapey font-light max-w-sm mx-auto md:mx-0 animate-reveal-text delay-[2250ms] [animation-fill-mode:forwards] opacity-0">
-                              We kindly encourage our favorite people to dress in our color palette on our special day.
+                            <p className="text-stone-500 text-xs leading-relaxed font-arapey font-light max-w-sm mx-auto md:mx-0 animate-reveal-text delay-[2250ms] [animation-fill-mode:forwards] opacity-0 tracking-widest uppercase">
+                              Ladies: Floor-Length Gown<br/>
+                              Gents: Barong Tagalog
+                            </p>
+                          </div>
+
+                          <div className="overflow-hidden pt-3">
+                            <p className="font-arapey text-stone-800 text-[13px] md:text-sm font-semibold animate-reveal-text delay-[2300ms] [animation-fill-mode:forwards] opacity-0 uppercase tracking-widest">
+                              Guests
+                            </p>
+                          </div>
+                          <div className="overflow-hidden pb-1 px-1">
+                            <p className="text-stone-500 text-xs leading-relaxed font-arapey font-light max-w-sm mx-auto md:mx-0 animate-reveal-text delay-[2350ms] [animation-fill-mode:forwards] opacity-0 tracking-widest uppercase">
+                              Kindly follow our suggested<br/>
+                              color palette below
                             </p>
                           </div>
                           
-                          <div className="flex justify-center md:justify-start items-center gap-2.5 pt-1 overflow-hidden">
-                            <span className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#7C3A3B] shadow-xs ring-1 ring-white/60 transition-all duration-300 hover:scale-110 animate-fade-in delay-[2350ms] [animation-fill-mode:forwards] opacity-0" title="Burgundy" />
-                            <span className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#D8B4B5] shadow-xs ring-1 ring-white/60 transition-all duration-300 hover:scale-110 animate-fade-in delay-[2400ms] [animation-fill-mode:forwards] opacity-0" title="Light Blush" />
-                            <span className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#A5686E] shadow-xs ring-1 ring-white/60 transition-all duration-300 hover:scale-110 animate-fade-in delay-[2450ms] [animation-fill-mode:forwards] opacity-0" title="Dusty Mauve" />
-                            <span className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#AC705A] shadow-xs ring-1 ring-white/60 transition-all duration-300 hover:scale-110 animate-fade-in delay-[2500ms] [animation-fill-mode:forwards] opacity-0" title="Terracotta" />
-                            <span className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#E2C1AE] shadow-xs ring-1 ring-white/60 transition-all duration-300 hover:scale-110 animate-fade-in delay-[2550ms] [animation-fill-mode:forwards] opacity-0" title="Peach Cream" />
+                          <div className="flex justify-center md:justify-start items-center gap-2.5 pt-2 overflow-hidden">
+                            <span className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#7C3A3B] shadow-xs ring-1 ring-white/60 transition-all duration-300 hover:scale-110 animate-fade-in delay-[2400ms] [animation-fill-mode:forwards] opacity-0" title="Burgundy" />
+                            <span className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#D8B4B5] shadow-xs ring-1 ring-white/60 transition-all duration-300 hover:scale-110 animate-fade-in delay-[2450ms] [animation-fill-mode:forwards] opacity-0" title="Light Blush" />
+                            <span className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#A5686E] shadow-xs ring-1 ring-white/60 transition-all duration-300 hover:scale-110 animate-fade-in delay-[2500ms] [animation-fill-mode:forwards] opacity-0" title="Dusty Mauve" />
+                            <span className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#AC705A] shadow-xs ring-1 ring-white/60 transition-all duration-300 hover:scale-110 animate-fade-in delay-[2550ms] [animation-fill-mode:forwards] opacity-0" title="Terracotta" />
+                            <span className="w-5 h-5 md:w-6 md:h-6 rounded-full bg-[#E2C1AE] shadow-xs ring-1 ring-white/60 transition-all duration-300 hover:scale-110 animate-fade-in delay-[2600ms] [animation-fill-mode:forwards] opacity-0" title="Peach Cream" />
                           </div>
                         </div>
                       </div>
