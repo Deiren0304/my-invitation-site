@@ -158,7 +158,7 @@ export default function RsvpForm() {
       if (error) throw error;
 
       // 2. Send Email Notification via Formspree
-      const formspreeEndpoint = "https://formspree.io/f/xjgnvagv"; 
+      const formspreeEndpoint = "https://formspree.io/f/mdenklez"; 
       
       await fetch(formspreeEndpoint, {
         method: "POST",
