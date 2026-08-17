@@ -361,6 +361,8 @@ export default function InvitationInfo({ onClose, onVideoPlay, onVideoPause }: I
                           src="/Saves.mp4" 
                           controls 
                           playsInline
+                          disablePictureInPicture // Prevents Android native PiP override
+                          controlsList="nodownload" // Strips out extra native buttons
                           onPlay={onVideoPlay}
                           onPause={onVideoPause}
                           onEnded={onVideoPause}

@@ -35,14 +35,16 @@ export default function RsvpForm() {
     setFullName(value);
     setSearchError("");
 
-    // Changed from >= 2 to >= 1 to trigger immediately
     if (value.trim().length >= 3) {
       try {
+        // Replace ñ/Ñ with a SQL wildcard to bypass Unicode normalization issues
+        const safeSearchValue = value.replace(/ñ/ig, '%');
+        
         // Query for names that contain the typed string
         const { data, error } = await supabase
           .from('guests')
           .select('full_name')
-          .ilike('full_name', `%${value}%`)
+          .ilike('full_name', `%${safeSearchValue}%`)
           .limit(5);
 
         if (data && !error) {
@@ -71,41 +73,45 @@ export default function RsvpForm() {
     setIsSearching(true);
     setSearchError("");
     
-    const query = fullName.trim();
+    // Replace ñ/Ñ with a wildcard to ensure the search works regardless of keyboard encoding
+    const query = fullName.trim().replace(/ñ/ig, '%');
 
     try {
-      // Find the exact match (case-insensitive) based on the input
+      // Find the match using wildcards to protect against hidden spaces and encodings
       const { data, error } = await supabase
         .from('guests')
         .select('*')
-        .ilike('full_name', query)
-        .single();
+        .ilike('full_name', `%${query}%`)
+        .limit(1);
 
-      if (error || !data) {
+      // We check if data is empty instead of relying on .single() to throw an error
+      if (error || !data || data.length === 0) {
         setSearchError("We couldn't find your name. Please ensure it matches exactly what was written on your physical envelope.");
         setIsSearching(false);
         return;
       }
 
-      if (data.has_rsvpd) {
+      const guestData = data[0];
+
+      if (guestData.has_rsvpd) {
         setSearchError("It looks like you have already submitted your RSVP! Please contact the couple if you need to make changes.");
         setIsSearching(false);
         return;
       }
 
       // Populate data from Supabase
-      setGuestId(data.id);
-      setAllocatedSeats(data.allocated_seats);
-      setMatchedName(data.full_name);
+      setGuestId(guestData.id);
+      setAllocatedSeats(guestData.allocated_seats);
+      setMatchedName(guestData.full_name);
       
       const initialGuestNames = Array.from(
-        { length: data.allocated_seats }, 
-        (_, index) => index === 0 ? data.full_name : ""
+        { length: guestData.allocated_seats }, 
+        (_, index) => index === 0 ? guestData.full_name : ""
       );
       
       setFormData(prev => ({
         ...prev,
-        attendingCount: data.allocated_seats, 
+        attendingCount: guestData.allocated_seats, 
         guestNames: initialGuestNames
       }));
       
@@ -267,7 +273,7 @@ export default function RsvpForm() {
                   }}
                 />
 
-                {/* Suggestions Dropdown (Absolute positioning removed, mt-2 added to push elements down) */}
+                {/* Suggestions Dropdown */}
                 {showSuggestions && suggestions.length > 0 && (
                   <ul className="w-full bg-white border border-stone-200/80 rounded-xl shadow-sm mt-2 max-h-48 overflow-y-auto">
                     {suggestions.map((name, idx) => (
