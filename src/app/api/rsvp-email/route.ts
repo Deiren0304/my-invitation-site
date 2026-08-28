@@ -6,7 +6,7 @@ export async function POST(request: Request) {
     const body = await request.json();
     const { matchedName, attending, actualCount, finalGuestNames, notes } = body;
 
-    // 1. Configure Gmail SMTP Transporter
+    // 1. Configure Gmail Transporter
     const transporter = nodemailer.createTransport({
       service: "gmail",
       auth: {
@@ -15,7 +15,7 @@ export async function POST(request: Request) {
       },
     });
 
-    // 2. Build Email HTML
+    // 2. Format HTML Email
     const emailHtml = `
       <div style="font-family: Arial, sans-serif; padding: 20px; color: #333;">
         <h2 style="color: #844C44; border-bottom: 2px solid #844C44; padding-bottom: 8px;">
@@ -29,21 +29,20 @@ export async function POST(request: Request) {
       </div>
     `;
 
-    // Create an array of recipients (filters out undefined values if a variable is missing)
-    const recipients = [
-      process.env.CLIENT_WEDDING_EMAIL,
-      process.env.GMAIL_USER,
-    ].filter(Boolean) as string[];
+    const recipient = process.env.CLIENT_WEDDING_EMAIL || "deividgv2026@gmail.com";
+    const sender = process.env.GMAIL_USER || "lawrenvalderama23@gmail.com";
 
-    // 3. Send Email directly to both Client and Developer
-    await transporter.sendMail({
-      from: `"Wedding RSVP System" <${process.env.GMAIL_USER}>`,
-      to: recipients, 
+    // 3. Send to both receiver and sender
+    const info = await transporter.sendMail({
+      from: `"Wedding RSVP" <${sender}>`,
+      to: `${recipient}, ${sender}`,
       subject: `New RSVP: ${matchedName} (${attending})`,
       html: emailHtml,
     });
 
-    return NextResponse.json({ success: true, message: "Email sent successfully" });
+    console.log("Email sent successfully! Message ID:", info.messageId);
+
+    return NextResponse.json({ success: true, message: "Email sent successfully!" });
   } catch (error: any) {
     console.error("Nodemailer Error:", error);
     return NextResponse.json({ success: false, error: error.message }, { status: 500 });
