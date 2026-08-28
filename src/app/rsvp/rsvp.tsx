@@ -139,7 +139,7 @@ export default function RsvpForm() {
     });
   };
 
-  // Handle Step 2: Final Submission to Supabase AND Formspree
+  // Handle Step 2: Final Submission to Supabase AND Nodemailer API
   const handleSubmitRSVP = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
@@ -163,21 +163,18 @@ export default function RsvpForm() {
 
       if (error) throw error;
 
-      // 2. Send Email Notification via Formspree
-      const formspreeEndpoint = "https://formspree.io/f/mdenklez"; 
-      
-      await fetch(formspreeEndpoint, {
+      // 2. Send Email Notification via Internal Nodemailer API (Replaces Formspree)
+      await fetch("/api/rsvp-email", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
         },
         body: JSON.stringify({
-          Invitation_Name: matchedName,
-          Attending: formData.attending === "yes" ? "Yes" : "No",
-          Guest_Count: actualCount,
-          Guest_Names: finalGuestNames.join(", ") || "None",
-          Notes: formData.notes || "None",
+          matchedName: matchedName,
+          attending: formData.attending === "yes" ? "Yes" : "No",
+          actualCount: actualCount,
+          finalGuestNames: finalGuestNames,
+          notes: formData.notes,
         }),
       });
       
@@ -279,7 +276,6 @@ export default function RsvpForm() {
                     {suggestions.map((name, idx) => (
                       <li 
                         key={idx}
-                        // Use onMouseDown instead of onClick to prevent the input's onBlur from firing first
                         onMouseDown={() => handleSelectSuggestion(name)}
                         className="px-5 py-3 hover:bg-[#F5EBE1]/50 cursor-pointer text-sm font-arapey text-stone-700 border-b border-stone-100 last:border-none transition-colors"
                       >
@@ -478,7 +474,7 @@ export default function RsvpForm() {
         </div>
       )}
       
-      {/* RSVP STRICT RULES NOTE (Always visible at the bottom) */}
+      {/* RSVP STRICT RULES NOTE */}
       <div className="mt-10 mb-2 w-full text-center opacity-0 animate-fade-in delay-[700ms] [animation-fill-mode:forwards]">
         <p className="font-arapey text-[#EADCCF]/90 text-[14px] md:text-[15px] leading-relaxed">
           <span className="font-bold text-white">Note:</span> Only guests who have<br className="md:hidden" /> confirmed their RSVP will attend.
