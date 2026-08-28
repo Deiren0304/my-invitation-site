@@ -76,7 +76,7 @@ export async function POST(request: Request) {
             ` : ''}
           </div>
           <div class="footer">
-            Sent via Wedding RSVP System • 2026
+            Sent via Wedding RSVP Invitation • 2026
           </div>
         </div>
       </body>
