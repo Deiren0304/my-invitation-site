@@ -1,8 +1,7 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  output: "export",
-  trailingSlash: true, // <--- This is the magic line that fixes the 403 error
+  // Removed output: "export" to allow Next.js API Routes / Nodemailer
   images: {
     unoptimized: true, 
   },
