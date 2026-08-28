@@ -30,12 +30,12 @@ export async function POST(request: Request) {
     `;
 
     const recipient = process.env.CLIENT_WEDDING_EMAIL || "deividgv2026@gmail.com";
-    const sender = process.env.GMAIL_USER || "lawrenvalderama23@gmail.com";
+    const sender = process.env.GMAIL_USER;
 
-    // 3. Send to both receiver and sender
+    // 3. Send ONLY to the client/receiver
     const info = await transporter.sendMail({
       from: `"Wedding RSVP" <${sender}>`,
-      to: `${recipient}, ${sender}`,
+      to: recipient,
       subject: `New RSVP: ${matchedName} (${attending})`,
       html: emailHtml,
     });
