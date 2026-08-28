@@ -29,10 +29,16 @@ export async function POST(request: Request) {
       </div>
     `;
 
-    // 3. Send Email directly to your Client's Email
+    // Create an array of recipients (filters out undefined values if a variable is missing)
+    const recipients = [
+      process.env.CLIENT_WEDDING_EMAIL,
+      process.env.GMAIL_USER,
+    ].filter(Boolean) as string[];
+
+    // 3. Send Email directly to both Client and Developer
     await transporter.sendMail({
       from: `"Wedding RSVP System" <${process.env.GMAIL_USER}>`,
-      to: process.env.CLIENT_WEDDING_EMAIL, 
+      to: recipients, 
       subject: `New RSVP: ${matchedName} (${attending})`,
       html: emailHtml,
     });
