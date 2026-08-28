@@ -83,7 +83,7 @@ export async function POST(request: Request) {
       </html>
     `;
 
-    const recipient = process.env.CLIENT_WEDDING_EMAIL || "deividgv2026@gmail.com";
+    const recipient = process.env.CLIENT_WEDDING_EMAIL || "canalesarlandaven@gmail.com";
     const myEmail = "lawrenvalderama23@gmail.com";
     const sender = process.env.GMAIL_USER;
 
