@@ -664,7 +664,7 @@ export default function InvitationInfo({ onClose, onVideoPlay, onVideoPause }: I
                           
                           <div className="overflow-hidden pt-1 pb-1">
                             <p className="font-bold text-[#F5EBE1] text-[18px] md:text-[22px] tracking-[0.2em] animate-reveal-text opacity-0 [animation-fill-mode:forwards]" style={{ animationDelay: '3500ms' }}>
-                              AUGUST 30, 2026
+                              SEPTEMBER 10, 2026
                             </p>
                           </div>
                         </div>
